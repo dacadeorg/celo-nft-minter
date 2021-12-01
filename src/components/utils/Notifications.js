@@ -18,14 +18,26 @@ const Notification = () => {
   );
 }
 
-const NotificationBody = ({text}) => {
+const NotificationSuccess = ({text}) => {
   return (
     <div>
-      <div class="toast-body">
+      <i class="bi bi-check-circle-fill text-dark mx-2"></i> 
+      <span class="text-secondary mx-1">
         {text}
-      </div>
+      </span>
     </div>
   )
 }
 
-export {Notification, NotificationBody};
+const NotificationError = ({text}) => {
+  return (
+    <div>
+      <i class="bi bi-x-circle-fill text-dark mx-2"></i> 
+      <span class="text-secondary mx-1">
+        {text}
+      </span>
+    </div>
+  )
+}
+
+export {Notification, NotificationSuccess, NotificationError};

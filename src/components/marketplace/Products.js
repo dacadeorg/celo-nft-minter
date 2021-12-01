@@ -5,7 +5,7 @@ import Product from "./Product";
 import Loader from "../utils/Loader";
 
 import { toast } from "react-toastify";
-import { NotificationBody } from "../utils/Notifications";
+import { NotificationSuccess, NotificationError } from "../utils/Notifications";
 import { getProducts as getProductList, buyProduct, createProduct } from "../../utils/marketplace";
 
 const Products = (props) => {
@@ -17,7 +17,6 @@ const Products = (props) => {
   const [loading, setloading] = useState(false);
 
   // function to get the list of products from the celo blockchain
-
   const getProducts = useCallback(
     async () => {
       try {
@@ -38,10 +37,10 @@ const Products = (props) => {
       setloading(true);
       createProduct(marketplaceContract, performActions, data);
       getProducts();
-      // toast.success("Product added successfully");
+      toast(<NotificationSuccess text="Product bought successfully." />);
     } catch (error) {
       console.log({ error });
-      // toast.error("Failed to create a product");
+      toast(<NotificationError text="Failed to create a product." />);
     } finally {
       setloading(false);
     }
@@ -56,11 +55,11 @@ const Products = (props) => {
       });
       props.updateBalance();
       getProducts();
-      // toast.success("Product bought successfully");
+      toast(<NotificationSuccess text="Product bought successfully" />);
     } catch (error) {
       console.log({ error });
 
-      // toast.error("Failed to purchase product.");
+      toast(<NotificationError text="Failed to purchase product." />);
     } finally {
       setloading(false);
     }
@@ -69,9 +68,8 @@ const Products = (props) => {
   useEffect(() => {
     try {
       if (address && marketplaceContract) {
-        // toast.info("Fetching products...");
-
-        toast(<NotificationBody text="hello 01" />);
+        // For testing purpose
+        // toast(<NotificationSuccess text="Product added successfully" />);
         getProducts();
         return;
       }
