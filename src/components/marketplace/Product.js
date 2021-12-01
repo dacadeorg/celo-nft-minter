@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import React from "react";
-import { ERC20_DECIMALS } from "../../utils/constants";
+import { weiToCusd } from "../../utils/utils";
 // import Identicons from "../utils/Identicon";
 
 export default function Product(props) {
@@ -34,7 +34,7 @@ export default function Product(props) {
             className="btn btn-lg btn-outline-dark buyBtn fs-6 p-3"
             onClick={_buyProduct}
           >
-            Buy for {new BigNumber(price).shiftedBy(-ERC20_DECIMALS).toString()}{" "}
+            Buy for {weiToCusd(price)}{" "}
             cUSD
           </button>
         </div>

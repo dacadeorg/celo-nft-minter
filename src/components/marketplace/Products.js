@@ -2,8 +2,9 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import React, { useEffect, useState, useCallback } from "react";
 import AddProduct from "./AddProduct";
 import Product from "./Product";
-import { toast } from "react-toastify";
 import Loader from "../utils/Loader";
+
+import { toast } from "react-toastify";
 import { NotificationBody } from "../utils/Notifications";
 import { getProducts as getProductList, buyProduct, createProduct } from "../../utils/marketplace";
 

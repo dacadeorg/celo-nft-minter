@@ -1,7 +1,5 @@
-import {
-    marketplaceContractAddress,
-    ERC20_DECIMALS
-  } from "./constants";
+import { marketplaceContractAddress } from "./constants";
+import { cusdToWei } from "./utils";
 import BigNumber from "bignumber.js";
 
 export const createProduct = async(
@@ -11,9 +9,7 @@ export const createProduct = async(
         // get the newly fetched address
         const _address = kit.defaultAccount;
 
-        const priceInWei = new BigNumber(price)
-          .shiftedBy(ERC20_DECIMALS)
-          .toString();
+        const priceInWei = cusdToWei(price);
 
         await marketplaceContract.methods
           .writeProduct(name, image, description, location, priceInWei)
