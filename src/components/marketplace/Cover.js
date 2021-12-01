@@ -1,6 +1,6 @@
 import React from "react";
 
-const Title = (props) => {
+const Cover = (props) => {
   // const changeAccount = () => {};
 
   if (props.name) {
@@ -31,4 +31,4 @@ const Title = (props) => {
 
   return null;
 };
-export default Title;
+export default Cover;

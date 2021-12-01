@@ -5,14 +5,14 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 
 import React from "react";
 
-import Address from "./components/navigation/Address";
-import Balance from "./components/navigation/Balance";
-import ConnectWallet from "./components/navigation/ConnectWallet";
-import Disconnect from "./components/navigation/DisconnectWallet";
+import Address from "./components/wallet/Address";
+import Balance from "./components/wallet/Balance";
+import ConnectWallet from "./components/wallet/ConnectWallet";
+import Disconnect from "./components/wallet/DisconnectWallet";
 
 import { Notification } from "./components/utils/Notifications";
 import Products from "./components/marketplace/Products";
-import Title from "./components/marketplace/Title";
+import Cover from "./components/marketplace/Cover";
 
 import { useBalance } from "./utils/hooks";
 import { useMarketplaceContract } from "./utils/hooks";
@@ -60,7 +60,7 @@ const App = () => {
             connect={connect}
           />
             <main>
-              <Title
+              <Cover
                 name={"Street Food Kigali"}
               />
             </main>
