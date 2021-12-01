@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "@celo-tools/use-contractkit/lib/styles.css";
 
-function App() {
+import { useContractKit } from "@celo-tools/use-contractkit";
+
+import React from "react";
+
+import Address from "./components/navigation/Address";
+import Balance from "./components/navigation/Balance";
+import ConnectWallet from "./components/navigation/ConnectWallet";
+import Disconnect from "./components/navigation/DisconnectWallet";
+
+import { Notification } from "./components/utils/Notifications";
+import Products from "./components/marketplace/Products";
+import Title from "./components/marketplace/Title";
+
+import { useBalance } from "./utils/hooks";
+import { useMarketplaceContract } from "./utils/hooks";
+import { useCusdContract } from "./utils/hooks";
+
+const App = () => {
+  const { address, destroy, connect } = useContractKit();
+  const { balance, getBalance } = useBalance();
+  const marketplaceContract = useMarketplaceContract();
+  const cusdContract = useCusdContract();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Notification />
+      <div className="container" style={{ maxWidth: "72em" }}>
+        {address 
+          ? 
+          <>
+            <nav className="navbar bg-white navbar-light text-dark mt-2">
+              <div className="container-fluid">
+                <Address
+                  address={address}
+                />
+                <Balance
+                  amount={balance.cUSD}
+                  symbol="cUSD"
+                />
+                <Disconnect
+                  destroy={destroy}
+                />
+              </div>
+            </nav>
+            <main>
+              <Products
+                address={address}
+                updateBalance={getBalance}
+                marketplaceContract={marketplaceContract}
+                cusdContract={cusdContract}
+              />
+            </main>
+          </>
+          :
+          <>
+          <ConnectWallet
+            connect={connect}
+          />
+            <main>
+              <Title
+                name={"Street Food Kigali"}
+              />
+            </main>
+          </>
+        }
+      </div>
+    </>
   );
-}
+};
 
 export default App;
