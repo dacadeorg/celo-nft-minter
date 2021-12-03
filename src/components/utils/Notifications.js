@@ -21,8 +21,8 @@ const Notification = () => {
 const NotificationSuccess = ({text}) => {
   return (
     <div>
-      <i class="bi bi-check-circle-fill text-dark mx-2"></i> 
-      <span class="text-secondary mx-1">
+      <i className="bi bi-check-circle-fill text-dark mx-2"></i> 
+      <span className="text-secondary mx-1">
         {text}
       </span>
     </div>
@@ -32,8 +32,8 @@ const NotificationSuccess = ({text}) => {
 const NotificationError = ({text}) => {
   return (
     <div>
-      <i class="bi bi-x-circle-fill text-dark mx-2"></i> 
-      <span class="text-secondary mx-1">
+      <i className="bi bi-x-circle-fill text-dark mx-2"></i> 
+      <span className="text-secondary mx-1">
         {text}
       </span>
     </div>

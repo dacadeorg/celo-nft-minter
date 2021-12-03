@@ -12,13 +12,13 @@ const Disconnect = ({destroy}) => {
       customUI: ({ onClose }) => {
         return (
           <div className='custom-ui card m-2'>
-            <div class="card-body m-2">
-              <h5 class="card-title">Disconnect</h5>
-              <p class="card-text">Are you sure you want to disconnect your wallet?</p>
-              <div class="d-flex justify-content-end ">
-                <button class="btn fw-bold" onClick={onClose}>CANCLE</button>
+            <div className="card-body m-2">
+              <h5 className="card-title">Disconnect</h5>
+              <p className="card-text">Are you sure you want to disconnect your wallet?</p>
+              <div className="d-flex justify-content-end ">
+                <button className="btn fw-bold" onClick={onClose}>CANCLE</button>
                 <button
-                  class="btn fw-bold"
+                  className="btn fw-bold"
                   onClick={() => {
                     destroy();
                     onClose();
@@ -39,7 +39,7 @@ const Disconnect = ({destroy}) => {
         className="border rounded-pill btn bg-light"
         onClick={logout}
       >
-        <i class="bi bi-arrows-angle-expand"></i>
+        <i className="bi bi-arrows-angle-expand"></i>
       </span>
     </>
   );

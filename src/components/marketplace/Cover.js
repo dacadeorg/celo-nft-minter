@@ -6,8 +6,8 @@ const Cover = (props) => {
   if (props.name) {
     return (
       <div className="d-flex vh-80 bg-success cover justify-content-center mt-3">
-        <div class="d-flex align-items-center m-4">
-          <div class="flex-column text-white">
+        <div className="d-flex align-items-center m-4">
+          <div className="flex-column text-white">
             <div className="m-0 h1 fw-bold">
               {props.name}
             </div>

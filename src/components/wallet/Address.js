@@ -9,7 +9,7 @@ const Address = (props) => {
     return (
       <>
         <span
-          class="border rounded-pill btn bg-light"
+          className="border rounded-pill btn bg-light"
         >
           {truncateAddress(props.address)}
         </span>
