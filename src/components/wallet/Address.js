@@ -2,16 +2,14 @@ import React from "react";
 // import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { truncateAddress } from "../../utils/utils";
 
-const Address = (props) => {
+const Address = ({ address }) => {
   // const changeAccount = () => {};
 
-  if (props.address) {
+  if (address) {
     return (
       <>
-        <span
-          className="border rounded-pill btn bg-light"
-        >
-          {truncateAddress(props.address)}
+        <span className="border rounded-pill btn bg-light">
+          {truncateAddress(address)}
         </span>
       </>
     );

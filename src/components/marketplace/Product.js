@@ -3,16 +3,16 @@ import React from "react";
 import { weiToCusd } from "../../utils/utils";
 // import Identicons from "../utils/Identicon";
 
-export default function Product(props) {
-  const { product, buyProduct } = props;
+export default function Product({ product, buyProduct }) {
 
-  const { owner, price, name, description, sold, location, image, index } =
+  const { price, name, description, sold, location, image, index } =
     product;
 
   const _buyProduct = () => {
     const amount = BigNumber(price).toString();
     buyProduct(index, amount);
   };
+  
   return (
     <div className="card col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
       <img className="card-img-top" src={image} alt="..." />

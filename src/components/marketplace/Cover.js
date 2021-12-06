@@ -1,16 +1,14 @@
 import React from "react";
 
-const Cover = (props) => {
+const Cover = ({ name }) => {
   // const changeAccount = () => {};
 
-  if (props.name) {
+  if (name) {
     return (
       <div className="d-flex vh-80 bg-success cover justify-content-center mt-3">
         <div className="d-flex align-items-center m-4">
           <div className="flex-column text-white">
-            <div className="m-0 h1 fw-bold">
-              {props.name}
-            </div>
+            <div className="m-0 h1 fw-bold">{name}</div>
             <div>
               <span className="m-0 text-white-50">
                 powered by Celo

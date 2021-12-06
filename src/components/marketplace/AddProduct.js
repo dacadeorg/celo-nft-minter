@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const AddProduct = ({ addProduct }) => {
-
   // do we really need to use state for every single input?
   const [name, setName] = useState("");
   const [image, setImage] = useState("");

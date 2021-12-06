@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 
 export const useContract = (abi, contractAddress) => {
@@ -8,10 +8,7 @@ export const useContract = (abi, contractAddress) => {
   const getContract = useCallback(async () => {
     const kit = await getConnectedKit();
 
-    const contract = new kit.web3.eth.Contract(
-      abi,
-      contractAddress
-    );
+    const contract = new kit.web3.eth.Contract(abi, contractAddress);
 
     setContract(contract);
   }, [getConnectedKit, abi, contractAddress]);

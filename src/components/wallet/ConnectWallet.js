@@ -2,8 +2,7 @@
 import React from "react";
 // import { toast } from "react-toastify";
 
-const ConnectWallet = ({connect}) => {
-
+const ConnectWallet = ({ connect }) => {
   const triggerConnection = async () => {
     try {
       await connect();

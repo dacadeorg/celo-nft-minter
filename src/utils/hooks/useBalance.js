@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
 
 export const useBalance = () => {
@@ -8,7 +8,7 @@ export const useBalance = () => {
   const getBalance = useCallback(async () => {
     const balance = await kit.getTotalBalance(address);
     setBalance(balance);
-  }, [address, kit])
+  }, [address, kit]);
   // look into isMounted from https://usehooks-ts.com/
 
   useEffect(() => {
@@ -17,6 +17,6 @@ export const useBalance = () => {
 
   return {
     balance,
-    getBalance
+    getBalance,
   };
 };

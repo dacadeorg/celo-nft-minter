@@ -6,31 +6,34 @@ import Loader from "../utils/Loader";
 
 import { toast } from "react-toastify";
 import { NotificationSuccess, NotificationError } from "../utils/Notifications";
-import { getProducts as getProductList, buyProduct, createProduct } from "../../utils/marketplace";
+import {
+  getProducts as getProductList,
+  buyProduct,
+  createProduct,
+} from "../../utils/marketplace";
 
-const Products = (props) => {
+const Products = ({
+  marketplaceContract,
+  cusdContract,
+  updateBalance,
+}) => {
   const { performActions, address } = useContractKit();
-  const marketplaceContract = props.marketplaceContract;
-  const cusdContract = props.cusdContract;
 
   const [products, setProducts] = useState([]);
   const [loading, setloading] = useState(false);
 
   // function to get the list of products from the celo blockchain
-  const getProducts = useCallback(
-    async () => {
-      try {
-        setloading(true);
-        const allProducts = await getProductList(marketplaceContract);
-        setProducts(allProducts);
-      } catch (error) {
-        console.log({ error });
-      } finally {
-        setloading(false);
-      }
-    },
-    [marketplaceContract],
-  );
+  const getProducts = useCallback(async () => {
+    try {
+      setloading(true);
+      const allProducts = await getProductList(marketplaceContract);
+      setProducts(allProducts);
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      setloading(false);
+    }
+  }, [marketplaceContract]);
 
   const addProduct = async (data) => {
     try {
@@ -53,7 +56,7 @@ const Products = (props) => {
         index: _index,
         price: _price,
       });
-      props.updateBalance();
+      updateBalance();
       getProducts();
       toast(<NotificationSuccess text="Product bought successfully" />);
     } catch (error) {
@@ -79,7 +82,7 @@ const Products = (props) => {
     }
   }, [marketplaceContract, address, getProducts]);
 
-  if (props.address) {
+  if (address) {
     return (
       <>
         <div className="mb-4" style={{ marginTop: "4em" }}>

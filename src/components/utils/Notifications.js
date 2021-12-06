@@ -16,28 +16,24 @@ const Notification = () => {
       pauseOnHover
     />
   );
-}
+};
 
-const NotificationSuccess = ({text}) => {
+const NotificationSuccess = ({ text }) => {
   return (
     <div>
-      <i className="bi bi-check-circle-fill text-dark mx-2"></i> 
-      <span className="text-secondary mx-1">
-        {text}
-      </span>
+      <i className="bi bi-check-circle-fill text-dark mx-2"></i>
+      <span className="text-secondary mx-1">{text}</span>
     </div>
-  )
-}
+  );
+};
 
-const NotificationError = ({text}) => {
+const NotificationError = ({ text }) => {
   return (
     <div>
-      <i className="bi bi-x-circle-fill text-dark mx-2"></i> 
-      <span className="text-secondary mx-1">
-        {text}
-      </span>
+      <i className="bi bi-x-circle-fill text-dark mx-2"></i>
+      <span className="text-secondary mx-1">{text}</span>
     </div>
-  )
-}
+  );
+};
 
-export {Notification, NotificationSuccess, NotificationError};
+export { Notification, NotificationSuccess, NotificationError };
