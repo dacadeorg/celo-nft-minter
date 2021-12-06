@@ -15,7 +15,7 @@
 // //     // bgColor="#ffe"
 // //     // spotColor="#abc"
 // //     // className="identicon"
-// //   />  
+// //   />
 // // };
 
 // export default Identicons;

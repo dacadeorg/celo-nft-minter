@@ -1,16 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {
   ContractKitProvider,
   Alfajores,
   NetworkNames,
-} from "@celo-tools/use-contractkit";
-import "bootstrap";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+} from '@celo-tools/use-contractkit';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+import 'bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,21 +18,21 @@ ReactDOM.render(
       networks={[Alfajores]}
       network={{
         name: NetworkNames.Alfajores,
-        rpcUrl: "https://alfajores-forno.celo-testnet.org",
-        graphQl: "https://alfajores-blockscout.celo-testnet.org/graphiql",
-        explorer: "https://alfajores-blockscout.celo-testnet.org",
+        rpcUrl: 'https://alfajores-forno.celo-testnet.org',
+        graphQl: 'https://alfajores-blockscout.celo-testnet.org/graphiql',
+        explorer: 'https://alfajores-blockscout.celo-testnet.org',
         chainId: 44787,
       }}
       dapp={{
-        name: "Celo Marketplace",
-        description: "A market place dapp built on the Celo blockchain",
-        url: "https://dacade.org",
+        name: 'Celo Marketplace',
+        description: 'A market place dapp built on the Celo blockchain',
+        url: 'https://dacade.org',
       }}
     >
       <App />
     </ContractKitProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

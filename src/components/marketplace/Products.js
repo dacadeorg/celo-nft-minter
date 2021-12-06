@@ -1,43 +1,36 @@
-import { useContractKit } from "@celo-tools/use-contractkit";
-import React, { useEffect, useState, useCallback } from "react";
-import AddProduct from "./AddProduct";
-import Product from "./Product";
-import Loader from "../utils/Loader";
+import { useContractKit, Contract } from '@celo-tools/use-contractkit';
+import React, { useEffect, useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+import AddProduct from './AddProduct';
+import Product from './Product';
+import Loader from '../utils/Loader';
 
-import { toast } from "react-toastify";
-import { NotificationSuccess, NotificationError } from "../utils/Notifications";
-import {
-  getProducts as getProductList,
-  buyProduct,
-  createProduct,
-} from "../../utils/marketplace";
+import { NotificationSuccess, NotificationError } from '../utils/Notifications';
+import { getProducts as getProductList, buyProduct, createProduct } from '../../utils/marketplace';
 
-const Products = ({
-  marketplaceContract,
-  cusdContract,
-  updateBalance,
-}) => {
+const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
   const { performActions, address } = useContractKit();
 
   const [products, setProducts] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // function to get the list of products from the celo blockchain
   const getProducts = useCallback(async () => {
     try {
-      setloading(true);
+      setLoading(true);
       const allProducts = await getProductList(marketplaceContract);
       setProducts(allProducts);
     } catch (error) {
       console.log({ error });
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   }, [marketplaceContract]);
 
   const addProduct = async (data) => {
     try {
-      setloading(true);
+      setLoading(true);
       createProduct(marketplaceContract, performActions, data);
       getProducts();
       toast(<NotificationSuccess text="Product bought successfully." />);
@@ -45,7 +38,7 @@ const Products = ({
       console.log({ error });
       toast(<NotificationError text="Failed to create a product." />);
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   };
 
@@ -64,7 +57,7 @@ const Products = ({
 
       toast(<NotificationError text="Failed to purchase product." />);
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   };
 
@@ -85,7 +78,7 @@ const Products = ({
   if (address) {
     return (
       <>
-        <div className="mb-4" style={{ marginTop: "4em" }}>
+        <div className="mb-4" style={{ marginTop: '4em' }}>
           <span
             className="btn btn-dark rounded-pill"
             data-bs-toggle="modal"
@@ -97,13 +90,13 @@ const Products = ({
         <main id="marketplace" className="row">
           {!loading ? (
             <>
-              <AddProduct addProduct={addProduct} />
+              <AddProduct save={addProduct} />
               {products.map((_product) => (
                 <Product
                   product={{
                     ..._product,
                   }}
-                  buyProduct={buy}
+                  buy={buy}
                 />
               ))}
             </>
@@ -117,4 +110,11 @@ const Products = ({
   }
   return null;
 };
+
+Products.propTypes = {
+  marketplaceContract: PropTypes.instanceOf(Contract).isRequired,
+  cusdContract: PropTypes.instanceOf(Contract).isRequired,
+  updateBalance: PropTypes.func.isRequired,
+};
+
 export default Products;

@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+/* eslint-disable react/jsx-filename-extension */
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const AddProduct = ({ addProduct }) => {
+const AddProduct = ({ save }) => {
   // do we really need to use state for every single input?
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
   const [price, setPrice] = useState(0);
 
   return (
     <>
-      {/*Modal*/}
+      {/* Modal */}
       <div
         className="modal fade"
         id="addModal"
@@ -93,11 +95,7 @@ const AddProduct = ({ addProduct }) => {
               </form>
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-light border"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" className="btn btn-light border" data-bs-dismiss="modal">
                 Close
               </button>
               <button
@@ -105,7 +103,13 @@ const AddProduct = ({ addProduct }) => {
                 className="btn btn-dark"
                 data-bs-dismiss="modal"
                 onClick={() => {
-                  addProduct({ name, image, description, location, price });
+                  save({
+                    name,
+                    image,
+                    description,
+                    location,
+                    price,
+                  });
                 }}
                 id="newProductBtn"
               >
@@ -117,6 +121,10 @@ const AddProduct = ({ addProduct }) => {
       </div>
     </>
   );
+};
+
+AddProduct.propTypes = {
+  save: PropTypes.func.isRequired,
 };
 
 export default AddProduct;

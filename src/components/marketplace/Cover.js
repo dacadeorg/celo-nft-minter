@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Cover = ({ name }) => {
   // const changeAccount = () => {};
@@ -12,10 +13,10 @@ const Cover = ({ name }) => {
             <div>
               <span className="m-0 text-white-50">
                 powered by Celo
-                {/* <img 
-                  src="https://celo.org/images/marketplace-icons/icon-celo-CELO-reverse-f.svg" 
-                  alt="Celo" 
-                  width="25" 
+                {/* <img
+                  src="https://celo.org/images/marketplace-icons/icon-celo-CELO-reverse-f.svg"
+                  alt="Celo"
+                  width="25"
                   height="25"
                   className="m-0 text-white-50"
                 /> */}
@@ -29,4 +30,13 @@ const Cover = ({ name }) => {
 
   return null;
 };
+
+Cover.propTypes = {
+  name: PropTypes.string,
+};
+
+Cover.defaultProps = {
+  name: '',
+};
+
 export default Cover;
