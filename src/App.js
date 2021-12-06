@@ -28,21 +28,13 @@ const App = () => {
     <>
       <Notification />
       <div className="container" style={{ maxWidth: "72em" }}>
-        {address 
-          ? 
+        {address ? (
           <>
             <nav className="navbar bg-white navbar-light text-dark mt-2">
               <div className="container-fluid">
-                <Address
-                  address={address}
-                />
-                <Balance
-                  amount={balance.cUSD}
-                  symbol="cUSD"
-                />
-                <Disconnect
-                  destroy={destroy}
-                />
+                <Address address={address} />
+                <Balance amount={balance.cUSD} symbol="cUSD" />
+                <Disconnect destroy={destroy} />
               </div>
             </nav>
             <main>
@@ -54,18 +46,14 @@ const App = () => {
               />
             </main>
           </>
-          :
+        ) : (
           <>
-          <ConnectWallet
-            connect={connect}
-          />
+            <ConnectWallet connect={connect} />
             <main>
-              <Cover
-                name={"Street Food Kigali"}
-              />
+              <Cover name={"Street Food Kigali"} />
             </main>
           </>
-        }
+        )}
       </div>
     </>
   );
