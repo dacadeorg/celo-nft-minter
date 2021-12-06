@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 // import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-import { truncateAddress } from "../../utils/utils";
+import PropTypes from 'prop-types';
+import { truncateAddress } from '../../utils/utils';
 
-const Address = (props) => {
-  // const changeAccount = () => {};
-
-  if (props.address) {
-    return (
-      <>
-        <span
-          class="border rounded-pill btn bg-light"
-        >
-          {truncateAddress(props.address)}
-        </span>
-      </>
-    );
+const Address = ({ address }) => {
+  if (address) {
+    return <span className="border rounded-pill btn bg-light">{truncateAddress(address)}</span>;
   }
 
   return null;
 };
+
+Address.propTypes = {
+  address: PropTypes.string,
+};
+
+Address.defaultProps = {
+  address: '',
+};
+
 export default Address;

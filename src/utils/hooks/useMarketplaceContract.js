@@ -1,7 +1,5 @@
 import { useContract } from './useContract';
-import { marketplaceContractAddress } from "../constants";
-import MarketPlaceAbi from "../../contracts/Marketplace.abi.json";
+import { marketplaceContractAddress } from '../constants';
+import MarketPlaceAbi from '../../contracts/Marketplace.abi.json';
 
-export const useMarketplaceContract = () => {
-    return useContract(MarketPlaceAbi, marketplaceContractAddress);
-};
+export const useMarketplaceContract = () => useContract(MarketPlaceAbi, marketplaceContractAddress);
