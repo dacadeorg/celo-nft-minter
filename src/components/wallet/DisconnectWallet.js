@@ -1,42 +1,20 @@
-import React from 'react';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import PropTypes from 'prop-types';
+import React from "react";
+// Import css
+import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
 // use the component from discord
 const DisconnectWallet = ({ destroy }) => {
   // const changeAccount = () => {};
-
-  const logout = () => {
-    confirmAlert({
-      customUI: ({ onClose }) => (
-        <div className="custom-ui card m-2">
-          <div className="card-body m-2">
-            <h5 className="card-title">Disconnect</h5>
-            <p className="card-text">Are you sure you want to disconnect your wallet?</p>
-            <div className="d-flex justify-content-end ">
-              <button type="button" className="btn fw-bold" onClick={onClose}>
-                CANCEL
-              </button>
-              <button
-                type="button"
-                className="btn fw-bold"
-                onClick={() => {
-                  destroy();
-                  onClose();
-                }}
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      ),
-    });
-  };
   return (
-    <span role="button" tabIndex={0} className="border rounded-pill btn bg-light" onClick={logout}>
+    <Button
+      variant="outline-secondary"
+      className="rounded-pill"
+      onClick={() => {
+        destroy();
+      }}
+    >
       <i className="bi bi-arrows-angle-expand" />
-    </span>
+    </Button>
   );
 };
 

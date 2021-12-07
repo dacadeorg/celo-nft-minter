@@ -1,13 +1,14 @@
 import { useContractKit, Contract } from '@celo-tools/use-contractkit';
 import React, { useEffect, useState, useCallback } from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import AddProduct from './AddProduct';
 import Product from './Product';
 import Loader from '../utils/Loader';
 
-import { NotificationSuccess, NotificationError } from '../utils/Notifications';
+// import { NotificationSuccess, NotificationError } from '../utils/Notifications';
 import { getProducts as getProductList, buyProduct, createProduct } from '../../utils/marketplace';
+import { Row } from 'react-bootstrap';
 
 const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
   const { performActions, address } = useContractKit();
@@ -33,10 +34,10 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
       setLoading(true);
       createProduct(marketplaceContract, performActions, data);
       getProducts();
-      toast(<NotificationSuccess text="Product bought successfully." />);
+      // toast(<NotificationSuccess text="Product bought successfully." />);
     } catch (error) {
       console.log({ error });
-      toast(<NotificationError text="Failed to create a product." />);
+      // toast(<NotificationError text="Failed to create a product." />);
     } finally {
       setLoading(false);
     }
@@ -51,11 +52,11 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
       });
       updateBalance();
       getProducts();
-      toast(<NotificationSuccess text="Product bought successfully" />);
+      // toast(<NotificationSuccess text="Product bought successfully" />);
     } catch (error) {
       console.log({ error });
 
-      toast(<NotificationError text="Failed to purchase product." />);
+      // toast(<NotificationError text="Failed to purchase product." />);
     } finally {
       setLoading(false);
     }
@@ -78,19 +79,11 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
   if (address) {
     return (
       <>
-        <div className="mb-4" style={{ marginTop: '4em' }}>
-          <span
-            className="btn btn-dark rounded-pill"
-            data-bs-toggle="modal"
-            data-bs-target="#addModal"
-          >
-            Add product
-          </span>
-        </div>
         <main id="marketplace" className="row">
           {!loading ? (
             <>
               <AddProduct save={addProduct} />
+              <Row>
               {products.map((_product) => (
                 <Product
                   product={{
@@ -99,6 +92,7 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
                   buy={buy}
                 />
               ))}
+              </Row>
             </>
           ) : (
             // display loading component

@@ -1,21 +1,19 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
-import 'react-toastify/dist/ReactToastify.css';
 
-const Notification = () => (
-  <ToastContainer
-    position="bottom-left"
-    autoClose={5000}
-    hideProgressBar
-    newestOnTop
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable={false}
-    pauseOnHover
-  />
-);
+// const Notification = () => (
+//   <ToastContainer
+//     position="bottom-left"
+//     autoClose={5000}
+//     hideProgressBar
+//     newestOnTop
+//     closeOnClick
+//     rtl={false}
+//     pauseOnFocusLoss
+//     draggable={false}
+//     pauseOnHover
+//   />
+// );
 
 const NotificationSuccess = ({ text }) => (
   <div>
@@ -45,4 +43,4 @@ NotificationSuccess.defaultProps = DefaultProps;
 NotificationError.propTypes = Props;
 NotificationError.defaultProps = DefaultProps;
 
-export { Notification, NotificationSuccess, NotificationError };
+export { NotificationSuccess, NotificationError };
