@@ -1,13 +1,14 @@
-import BigNumber from 'bignumber.js';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { weiToCusd } from '../../utils/utils';
+import BigNumber from "bignumber.js";
+import React from "react";
+import PropTypes from "prop-types";
+import { weiToCusd } from "../../utils/utils";
+import { Card, Button, Col, Badge, Stack} from "react-bootstrap";
+import { truncateAddress } from '../../utils/utils';
+import Identicon from '../utils/Identicon'
 // import Identicons from "../utils/Identicon";
 
 const Product = ({ product, buy }) => {
-  const {
-    price, name, description, sold, location, image, index,
-  } = product;
+  const { price, name, description, sold, location, image, index, owner } = product;
 
   const triggerBuy = () => {
     const amount = BigNumber(price).toString();
@@ -15,38 +16,38 @@ const Product = ({ product, buy }) => {
   };
 
   return (
-    <div className="card col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
-      <img className="card-img-top" src={image} alt="..." />
-      {/* <Identicons size={60} address={owner} /> */}
-      <div className="position-absolute top-0 end-0 bg-light border mt-4 px-2 py-1 rounded-start">
-        {sold}
-        {' '}
-        Sold
-      </div>
-      <div className="card-body text-left p-4 position-relative">
-        <h2 className="card-title fs-4 fw-bold mt-2">{name}</h2>
-        <p className="card-text mb-4" style={{ minHeight: '82px' }}>
-          {description}
-        </p>
-        <p className="card-text mt-4">
-          <i className="bi bi-geo-alt-fill" />
-          <span>{location}</span>
-        </p>
-        <div className="d-grid gap-2">
-          <button
-            type="button"
-            className="btn btn-lg btn-outline-dark buyBtn fs-6 p-3"
-            onClick={triggerBuy}
-          >
-            Buy for
-            {' '}
-            {weiToCusd(price)}
-            {' '}
-            cUSD
-          </button>
+    <Col key={index}>
+      <Card className=" h-100">
+        <Card.Header>
+          <Stack direction="horizontal" gap={2}>
+
+            <Identicon address={owner} size={28} />
+            <span className="font-monospace text-secondary">{truncateAddress(owner)}</span>
+            <Badge bg="secondary"
+              className="ms-auto">
+              {sold} Sold
+            </Badge>
+          </Stack> 
+        </Card.Header>
+        <div className=" ratio ratio-4x3"> 
+            <img  src={image} alt={name} style={{objectFit: 'cover'}}/>     
         </div>
-      </div>
-    </div>
+        <Card.Body className="d-flex  flex-column text-center">
+          <Card.Title>{name}</Card.Title>
+          <Card.Text className="flex-grow-1 ">{description}</Card.Text>
+          <Card.Text className="text-secondary">
+            {//<i className="bi bi-geo-alt-fill me-1" />
+            }
+            <span>{location}</span>
+          </Card.Text >
+          
+          <Button variant="outline-dark" onClick={triggerBuy} className="w-100 py-3">
+            Buy for {weiToCusd(price)} cUSD
+          </Button>
+        </Card.Body>
+                
+      </Card>
+    </Col>
   );
 };
 

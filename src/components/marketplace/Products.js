@@ -8,6 +8,7 @@ import Loader from '../utils/Loader';
 
 import { NotificationSuccess, NotificationError } from '../utils/Notifications';
 import { getProducts as getProductList, buyProduct, createProduct } from '../../utils/marketplace';
+import { Row, Toast, ToastContainer } from 'react-bootstrap';
 
 const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
   const { performActions, address } = useContractKit();
@@ -33,10 +34,11 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
       setLoading(true);
       createProduct(marketplaceContract, performActions, data);
       getProducts();
-      toast(<NotificationSuccess text="Product bought successfully." />);
+      //toast(<NotificationSuccess text="Product bought successfully." />);
     } catch (error) {
       console.log({ error });
       toast(<NotificationError text="Failed to create a product." />);
+      //toast("Failed to create a product.");
     } finally {
       setLoading(false);
     }
@@ -51,10 +53,11 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
       });
       updateBalance();
       getProducts();
+      //toast("Product bought successfully");
       toast(<NotificationSuccess text="Product bought successfully" />);
     } catch (error) {
       console.log({ error });
-
+      //toast("Failed to purchase product.");
       toast(<NotificationError text="Failed to purchase product." />);
     } finally {
       setLoading(false);
@@ -78,33 +81,31 @@ const Products = ({ marketplaceContract, cusdContract, updateBalance }) => {
   if (address) {
     return (
       <>
-        <div className="mb-4" style={{ marginTop: '4em' }}>
-          <span
-            className="btn btn-dark rounded-pill"
-            data-bs-toggle="modal"
-            data-bs-target="#addModal"
-          >
-            Add product
-          </span>
-        </div>
-        <main id="marketplace" className="row">
+       
           {!loading ? (
             <>
-              <AddProduct save={addProduct} />
-              {products.map((_product) => (
-                <Product
-                  product={{
-                    ..._product,
-                  }}
-                  buy={buy}
-                />
-              ))}
+              <div className="d-flex justify-content-between align-items-center mb-4">
+                <h1 className="fs-4 fw-bold mb-0">Street Food Kigali</h1>
+                <AddProduct save={addProduct} />
+              </div>
+                <Row xs={1} className="g-3  mb-5">
+                
+                {products.map((_product) => (
+                  <Product
+                    product={{
+                      ..._product,
+                    }}
+                    buy={buy}
+                  />
+                ))}
+                </Row>
+              
             </>
           ) : (
             // display loading component
             <Loader />
           )}
-        </main>
+        
       </>
     );
   }
