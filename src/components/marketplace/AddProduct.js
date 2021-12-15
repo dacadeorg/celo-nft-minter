@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, FloatingLabel, Card , Alert} from "react-bootstrap";
 
 const AddProduct = ({ save }) => {
   // do we really need to use state for every single input?
@@ -10,6 +10,7 @@ const AddProduct = ({ save }) => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState(0);
+  const isFormFilled = ()=> name && image && description && location && price
 
   const [show, setShow] = useState(false);
 
@@ -17,80 +18,77 @@ const AddProduct = ({ save }) => {
   const handleShow = () => setShow(true);
 
   return (
-    <>
-      <div className="my-4">
-        <Button onClick={handleShow} variant="dark" className="rounded-pill">
-          Add product
-        </Button>
-      </div>
+    <> 
+      <Button onClick={handleShow}  variant="dark" className="rounded-pill px-0" style={{width:"38px"}}>
+        <i class="bi bi-plus"></i>
+      </Button>
+      
       {/* Modal */}
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>New Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Product name</Form.Label>
+            <FloatingLabel
+              controlId="inputName"
+              label="Product name"
+              className="mb-3"
+            >
               <Form.Control
                 type="text"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
-                placeholder="Enter name of product"
+                placeholder="Product name"
               />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Image URL</Form.Label>
-              <Form.Control
-                type="text"
+            <FloatingLabel controlId="inputUrl" label="Image URL" className="mb-3">
+              <Form.Control type="text" placeholder="Image URL" 
                 onChange={(e) => {
                   setImage(e.target.value);
                 }}
-                placeholder="Enter image url"
               />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Product description</Form.Label>
+            <FloatingLabel controlId="inputDescription" label="Description" className="mb-3">
               <Form.Control
-                type="text"
+                as="textarea"
+                placeholder="description"
+                style={{ height: '80px' }}
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
-                placeholder="Enter product description"
               />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                type="text"
+            <FloatingLabel controlId="inputLocation" label="Location" className="mb-3">
+              <Form.Control type="text" placeholder="Location" 
                 onChange={(e) => {
                   setLocation(e.target.value);
                 }}
-                placeholder="Enter location"
               />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                type="text"
+            </FloatingLabel>
+
+            <FloatingLabel controlId="inputPrice" label="Price" className="mb-3">
+              <Form.Control type="text" placeholder="Price" 
                 onChange={(e) => {
-                  setPrice(Number(e.target.value));
+                  setPrice(e.target.value);
                 }}
-                placeholder="Enter price"
               />
-            </Form.Group>
+            </FloatingLabel>
+            
+
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="outline-secondary" onClick={handleClose}>
             Close
           </Button>
           <Button
-            variant="primary"
+            variant="dark"
+            disabled={!isFormFilled()}
             onClick={() => {
               save({
                 name,

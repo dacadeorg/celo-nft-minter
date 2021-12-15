@@ -1,21 +1,19 @@
-// import React from "react";
-// import Identicon from "react-hooks-identicons";
-// //import Blockies from 'react-blockies';
+import { useEffect, useRef } from "react";
+import Jazzicon from "@metamask/jazzicon";
 
-// const Identicons = ({ address, size }) => {
-//   return <Identicon size={size || 60} string={address || "Helloworld"} />;
-// };
+export default function Identicon({address, size, ...rest}) {
+  const ref = useRef();
 
-// // const Identicons = ({ address, size }) => {
-// //   return <Blockies
-// //     seed={address || "Helloworld"}
-// //     size={size || 60}
-// //     // scale={3}
-// //     // color="#dfe"
-// //     // bgColor="#ffe"
-// //     // spotColor="#abc"
-// //     // className="identicon"
-// //   />
-// // };
+  useEffect(() => {
+    if (address && ref.current) {
+      ref.current.innerHTML = "";
+      ref.current.appendChild(Jazzicon(size, parseInt(address.slice(2, 10), 16)));
+    }
+  }, [address, size]);
 
-// export default Identicons;
+  return (
+    <div {...rest} >
+        <div ref={ref} style={{width:`${size}px`,height:`${size}px`}}  />
+    </div>
+  )
+}

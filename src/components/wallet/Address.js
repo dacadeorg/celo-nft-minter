@@ -6,7 +6,9 @@ import { Button } from "react-bootstrap";
 
 const Address = ({ address }) => {
   if (address) {
-    return <Button variant="outline-secondary" className="rounded-pill">{truncateAddress(address)}</Button>;
+    return (
+    <Button variant="outline-secondary" className="rounded-pill">{truncateAddress(address)}</Button>
+    )
   }
 
   return null;

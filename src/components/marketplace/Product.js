@@ -2,11 +2,13 @@ import BigNumber from "bignumber.js";
 import React from "react";
 import PropTypes from "prop-types";
 import { weiToCusd } from "../../utils/utils";
-import { Card, Button, Col, Badge } from "react-bootstrap";
+import { Card, Button, Col, Badge, Stack} from "react-bootstrap";
+import { truncateAddress } from '../../utils/utils';
+import Identicon from '../utils/Identicon'
 // import Identicons from "../utils/Identicon";
 
 const Product = ({ product, buy }) => {
-  const { price, name, description, sold, location, image, index } = product;
+  const { price, name, description, sold, location, image, index, owner } = product;
 
   const triggerBuy = () => {
     const amount = BigNumber(price).toString();
@@ -14,29 +16,36 @@ const Product = ({ product, buy }) => {
   };
 
   return (
-    <Col lg={4} md={6} xs={12} className="mb-4" key={index}>
-      <Card style={{height: '100%'}}>
-        <Card.Img variant="top" src={image} />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>{description}</Card.Text>
-          <Card.Text>
-            <Badge
-              bg="light"
-              text="dark"
-              className="position-absolute top-0 end-0 border mt-4 rounded-start"
-            >
+    <Col key={index}>
+      <Card className=" h-100">
+        <Card.Header>
+          <Stack direction="horizontal" gap={2}>
+
+            <Identicon address={owner} size={28} />
+            <span className="font-monospace text-secondary">{truncateAddress(owner)}</span>
+            <Badge bg="secondary"
+              className="ms-auto">
               {sold} Sold
             </Badge>
-          </Card.Text>
-          <Card.Text>
-            <i className="bi bi-geo-alt-fill" />
+          </Stack> 
+        </Card.Header>
+        <div className=" ratio ratio-4x3"> 
+            <img  src={image} alt={name} style={{objectFit: 'cover'}}/>     
+        </div>
+        <Card.Body className="d-flex  flex-column text-center">
+          <Card.Title>{name}</Card.Title>
+          <Card.Text className="flex-grow-1 ">{description}</Card.Text>
+          <Card.Text className="text-secondary">
+            {//<i className="bi bi-geo-alt-fill me-1" />
+            }
             <span>{location}</span>
-          </Card.Text>
-          <Button variant="outline-dark" onClick={triggerBuy}>
+          </Card.Text >
+          
+          <Button variant="outline-dark" onClick={triggerBuy} className="w-100 py-3">
             Buy for {weiToCusd(price)} cUSD
           </Button>
         </Card.Body>
+                
       </Card>
     </Col>
   );
