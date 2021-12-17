@@ -6,6 +6,7 @@ import React from "react";
 import Wallet from "./components/wallet/Wallet";
 import { Notification } from './components/utils/Notifications';
 import Products from "./components/marketplace/Products";
+import coverImg from "./assets/img/sandwich.jpg"
 
 
 import {
@@ -13,7 +14,7 @@ import {
   useMarketplaceContract,
   useCusdContract,
 } from "./utils/hooks";
-import { Container, Nav , Button, Alert} from "react-bootstrap";
+import { Container, Nav , Button} from "react-bootstrap";
 
 const App = function AppWrapper() {
   const { address, destroy, connect } = useContractKit();
@@ -24,9 +25,9 @@ const App = function AppWrapper() {
   return (
     <>
       <Notification />
-      <Container style={{maxWidth:"400px"}}>
+      
         {address ? (
-          <> 
+          <Container fluid="md">
             <Nav className="justify-content-end pt-3 pb-5">
               <Nav.Item>
                 <Wallet address={address} amount={balance.cUSD} symbol="cUSD" destroy={destroy}/>
@@ -40,25 +41,28 @@ const App = function AppWrapper() {
                 cusdContract={cusdContract}
               />
             </main>
-          </>
+          </Container>
         ) : (  
-          <div className="d-flex justify-content-center flex-column text-center vh-100">
-           <Alert  variant="warning" className="mt-auto">
-              <Alert.Heading>Street Food Kigali</Alert.Heading>
+          <div className="d-flex justify-content-center flex-column text-center " style={{background:"#000", minHeight:"100vh"}}>
+
+            <div className="mt-auto text-light mb-5">
+              <div className=" ratio ratio-1x1 mx-auto mb-2" style={{maxWidth:"320px"}}> 
+                <img src={coverImg} alt="" />     
+              </div>
+              <h1>Street Food Kigali</h1>
               <p>
               Please connect your wallet to continue.
               </p>  
-              <div className="d-flex justify-content-center mt-5">
-                <Button onClick={connect} variant="warning" className="rounded-pill px-3">
+              <Button onClick={connect} variant="outline-light" className="rounded-pill px-3 mt-3">
                   Connect Wallet
                 </Button>
-              </div>
-            </Alert>
-            <p className="mt-auto">Powered by Celo</p>      
+            </div>
+           
+            <p className="mt-auto text-secondary">Powered by Celo</p>      
           </div>
           
         )}
-      </Container>
+      
     </>
   );
 };
