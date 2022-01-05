@@ -6,11 +6,11 @@ import AddNfts from './AddNfts';
 import Nft from './Nft';
 import Loader from '../utils/Loader';
 
-import { NotificationSuccess, NotificationError } from '../utils/Notifications';
+import {NotificationSuccess, NotificationError} from '../utils/Notifications';
 import { getNfts, createNft } from '../../utils/marketplace';
-import { Row, Toast, ToastContainer } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
-const NftList = ({ marketplaceContract, updateBalance }) => {
+const NftList = ({ marketplaceContract }) => {
   const { performActions, address } = useContractKit();
 
   const [nfts, setNfts] = useState([]);
@@ -36,11 +36,12 @@ const NftList = ({ marketplaceContract, updateBalance }) => {
       console.log({data})
       await createNft(marketplaceContract, performActions, data);
       console.log("NFT created!!!")
-      // await getNfts(marketplaceContract);
-      toast(<NotificationError text="Updating NFT list...." />);
+
+      toast(<NotificationSuccess text="Updating NFT list...." />);
       setTimeout(async () =>{
-        await getNfts(marketplaceContract);
-      }, 3000);//wait 2 seconds
+      window.location.reload()
+        // await getNfts(marketplaceContract);
+      }, 2000);//wait 2 seconds
 
     } catch (error) {
       console.log({ error });

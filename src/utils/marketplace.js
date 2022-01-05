@@ -1,6 +1,4 @@
-import BigNumber from 'bignumber.js';
-import { marketplaceContractAddress } from './constants';
-import { cusdToWei } from './utils';
+
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import axios from "axios";
 
@@ -83,16 +81,18 @@ export const getNfts = async (marketplaceContract) => {
         const nftsLength = await marketplaceContract.methods.totalSupply().call()
         console.log({nftsLength})
         for (let i = 0; i < Number(nftsLength); i ++) {
-            const nft = new Promise(async (resolve, reject) => {
+            const nft = new Promise(async (resolve) => {
                 const res = await marketplaceContract.methods
                     .tokenURI(i)
                     .call()
                 console.log("res, ", res)
                 const meta = await fetchNftMeta(res)
                 console.log({meta})
+                const owner = await fetchNftOwner(marketplaceContract, i)
+                console.log({owner})
                 resolve({
                     index: i,
-                    owner: meta.data.owner,
+                    owner,
                     name: meta.data.name,
                     image: meta.data.image,
                     description: meta.data.description,
@@ -123,4 +123,20 @@ export const fetchNftMeta = async (ipfsUrl) => {
     }
 
 };
+
+
+export const fetchNftOwner = async (marketplaceContract,index) => {
+    try {
+
+        return  await marketplaceContract.methods.ownerOf(index).call()
+
+
+
+    } catch (e) {
+        console.log({e})
+
+    }
+
+};
+
 
