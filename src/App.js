@@ -5,13 +5,12 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import React from "react";
 import Wallet from "./components/wallet/Wallet";
 import { Notification } from "./components/utils/Notifications";
-import Products from "./components/marketplace/Products";
+import Nfts from "./components/marketplace/Nfts";
 import coverImg from "./assets/img/sandwich.jpg";
 
 import {
   useBalance,
   useMarketplaceContract,
-  useCusdContract,
 } from "./utils/hooks";
 import { Container, Nav, Button } from "react-bootstrap";
 
@@ -19,7 +18,6 @@ const App = function AppWrapper() {
   const { address, destroy, connect } = useContractKit();
   const { balance, getBalance } = useBalance();
   const marketplaceContract = useMarketplaceContract();
-  const cusdContract = useCusdContract();
 
   return (
     <>
@@ -38,11 +36,11 @@ const App = function AppWrapper() {
             </Nav.Item>
           </Nav>
           <main>
-            <Products
+            <Nfts
               address={address}
               updateBalance={getBalance}
               marketplaceContract={marketplaceContract}
-              cusdContract={cusdContract}
+
             />
           </main>
         </Container>
@@ -58,7 +56,7 @@ const App = function AppWrapper() {
             >
               <img src={coverImg} alt="" />
             </div>
-            <h1>Street Food Kigali</h1>
+            <h1>NFT Marketplace</h1>
             <p>Please connect your wallet to continue.</p>
             <Button
               onClick={() => connect().catch((e) => console.log(e))}

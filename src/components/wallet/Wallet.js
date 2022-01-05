@@ -43,6 +43,4 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
   return null;
 };
 
-
-
 export default Wallet;
