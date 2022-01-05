@@ -36,11 +36,11 @@ const NftList = ({ marketplaceContract, updateBalance }) => {
       console.log({data})
       await createNft(marketplaceContract, performActions, data);
       console.log("NFT created!!!")
-      await getNfts(marketplaceContract);
-
+      // await getNfts(marketplaceContract);
+      toast(<NotificationError text="Updating NFT list...." />);
       setTimeout(async () =>{
         await getNfts(marketplaceContract);
-      }, 2000);//wait 2 seconds
+      }, 3000);//wait 2 seconds
 
     } catch (error) {
       console.log({ error });

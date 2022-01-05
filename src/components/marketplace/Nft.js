@@ -8,7 +8,7 @@ import Identicon from '../utils/Identicon'
 
 const Nft = ({ nft, buy }) => {
   const {  image, description, owner, name, index } = nft;
-  console.log({nft})
+
 
   return (
     <Col key={index}>
