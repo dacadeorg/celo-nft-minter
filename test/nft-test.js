@@ -34,6 +34,5 @@ describe("MyNFT", function () {
 
       expect(await myNFT.tokenURI(0)).to.equal(tokenURI_1);
       expect(await myNFT.tokenURI(1)).to.equal(tokenURI_2);
-
   })
 });

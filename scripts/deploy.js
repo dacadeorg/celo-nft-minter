@@ -13,20 +13,34 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
-
-  await greeter.deployed();
-
-  console.log("Greeter deployed to:", greeter.address);
-
   const MyNFT = await hre.ethers.getContractFactory("MyNFT");
   const myNFT = await MyNFT.deploy();
 
   await myNFT.deployed();
 
   console.log("MyNFT deployed to:", myNFT.address);
+  storeContractData(myNFT)
+}
+
+function storeContractData(contract) {
+  const fs = require("fs");
+  const contractsDir = __dirname + "/../src/contracts";
+
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir);
+  }
+
+  fs.writeFileSync(
+    contractsDir + "/MyNFT-address.json",
+    JSON.stringify({ MyNFT: contract.address }, undefined, 2)
+  );
+
+  const MyNFTArtifact = artifacts.readArtifactSync("MyNFT");
+
+  fs.writeFileSync(
+    contractsDir + "/MyNFT.json",
+    JSON.stringify(MyNFTArtifact, null, 2)
+  );
 }
 
 // We recommend this pattern to be able to use async/await everywhere

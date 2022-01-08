@@ -1,5 +1,5 @@
 import { useContract } from './useContract';
-import { marketplaceContractAddress } from '../constants';
-import MarketPlaceAbi from '../../contracts/NftMarketplace.abi.json';
+import MyNFTAbi from '../../contracts/MyNFT.json';
+import MyNFTContractAddress from '../../contracts/MyNFT-address.json';
 
-export const useMarketplaceContract = () => useContract(MarketPlaceAbi, marketplaceContractAddress);
+export const useMarketplaceContract = () => useContract(MyNFTAbi.abi, MyNFTContractAddress.MyNFT);
