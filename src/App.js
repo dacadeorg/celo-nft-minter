@@ -40,7 +40,6 @@ const App = function AppWrapper() {
               address={address}
               updateBalance={getBalance}
               marketplaceContract={marketplaceContract}
-
             />
           </main>
         </Container>

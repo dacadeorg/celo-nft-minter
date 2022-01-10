@@ -130,13 +130,22 @@ export const fetchNftOwner = async (marketplaceContract,index) => {
 
         return  await marketplaceContract.methods.ownerOf(index).call()
 
+    } catch (e) {
+        console.log({e})
+    }
+};
 
+export const fetchNftContractOwner = async (marketplaceContract) => {
+    try {
+
+        let owner = await marketplaceContract.methods.owner().call()
+        console.log("owner:" + owner)
+        return owner
 
     } catch (e) {
         console.log({e})
-
     }
-
 };
+
 
 

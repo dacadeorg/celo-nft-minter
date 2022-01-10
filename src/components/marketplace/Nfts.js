@@ -7,7 +7,7 @@ import Nft from './Nft';
 import Loader from '../utils/Loader';
 
 import {NotificationSuccess, NotificationError} from '../utils/Notifications';
-import { getNfts, createNft } from '../../utils/marketplace';
+import { getNfts, createNft, fetchNftContractOwner } from '../../utils/marketplace';
 import { Row } from 'react-bootstrap';
 
 const NftList = ({ marketplaceContract }) => {
@@ -74,7 +74,7 @@ const NftList = ({ marketplaceContract }) => {
             <>
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <h1 className="fs-4 fw-bold mb-0">NFT Marketplace</h1>
-                <AddNfts save={addNft} address={address} />
+                  <AddNfts save={addNft} address={address} />
               </div>
                 <Row xs={1} sm={2} lg={3}  className="g-3  mb-5 g-xl-4 g-xxl-5">
                 
