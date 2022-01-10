@@ -15,6 +15,7 @@ const NftList = ({ marketplaceContract }) => {
 
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [nftOwner, setNftOwner] = useState(null);
 
   // function to get the list of products from the celo blockchain
   const getAssets = useCallback(async () => {
@@ -51,12 +52,22 @@ const NftList = ({ marketplaceContract }) => {
     }
   };
 
+
+  const fetchContractOwner = async (marketplaceContract) =>{
+
+    const _address = await fetchNftContractOwner(marketplaceContract)
+    console.log({_address})
+    setNftOwner(_address)
+
+  }
+
   useEffect(() => {
     try {
       if (address && marketplaceContract) {
         // For testing purpose
         // toast(<NotificationSuccess text="Product added successfully" />);
         getAssets();
+        fetchContractOwner(marketplaceContract)
       }
     } catch (error) {
       console.log({ error });
@@ -66,7 +77,7 @@ const NftList = ({ marketplaceContract }) => {
 
   if (address) {
 
-
+   console.log({nftOwner})
     return (
       <>
        
@@ -74,7 +85,9 @@ const NftList = ({ marketplaceContract }) => {
             <>
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <h1 className="fs-4 fw-bold mb-0">NFT Marketplace</h1>
-                  <AddNfts save={addNft} address={address} />
+                { nftOwner === address ?
+                  <AddNfts save={addNft} address={address} /> :null
+                }
               </div>
                 <Row xs={1} sm={2} lg={3}  className="g-3  mb-5 g-xl-4 g-xxl-5">
                 

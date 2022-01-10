@@ -124,7 +124,6 @@ export const fetchNftMeta = async (ipfsUrl) => {
 
 };
 
-
 export const fetchNftOwner = async (marketplaceContract,index) => {
     try {
 
