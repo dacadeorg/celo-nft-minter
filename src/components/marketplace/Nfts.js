@@ -22,7 +22,6 @@ const NftList = ({ marketplaceContract }) => {
     try {
       setLoading(true);
       const allNfts = await getNfts(marketplaceContract);
-
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });
@@ -34,16 +33,10 @@ const NftList = ({ marketplaceContract }) => {
   const addNft = async (data) => {
     try {
       setLoading(true);
-      console.log({data})
       await createNft(marketplaceContract, performActions, data);
-      console.log("NFT created!!!")
-
       toast(<NotificationSuccess text="Updating NFT list...." />);
-      setTimeout(async () =>{
-      window.location.reload()
-        // await getNfts(marketplaceContract);
-      }, 2000);//wait 2 seconds
-
+      // window.location.reload()
+      getAssets()
     } catch (error) {
       console.log({ error });
       toast(<NotificationError text="Failed to create an NFT." />);
