@@ -10,7 +10,7 @@ import {NotificationSuccess, NotificationError} from '../utils/Notifications';
 import { getNfts, createNft, fetchNftContractOwner } from '../../utils/marketplace';
 import { Row } from 'react-bootstrap';
 
-const NftList = ({ marketplaceContract }) => {
+const NftList = ({ marketplaceContract, name }) => {
   const { performActions, address } = useContractKit();
 
   const [nfts, setNfts] = useState([]);
@@ -77,7 +77,7 @@ const NftList = ({ marketplaceContract }) => {
           {!loading ? (
             <>
               <div className="d-flex justify-content-between align-items-center mb-4">
-                <h1 className="fs-4 fw-bold mb-0">NFT Marketplace</h1>
+                <h1 className="fs-4 fw-bold mb-0">{name}</h1>
                 { nftOwner === address ?
                   <AddNfts save={addNft} address={address} /> :null
                 }

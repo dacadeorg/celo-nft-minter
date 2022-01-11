@@ -7,13 +7,13 @@ import Wallet from "./components/wallet/Wallet";
 import { Notification } from "./components/utils/Notifications";
 import { Cover } from "./components/utils/Cover";
 import Nfts from "./components/marketplace/Nfts";
-import coverImg from "./assets/img/sandwich.jpg";
+import coverImg from "./assets/img/nft_geo_cover.png";
 
 import {
   useBalance,
   useMarketplaceContract,
 } from "./utils/hooks";
-import { Container, Nav, Button } from "react-bootstrap";
+import { Container, Nav } from "react-bootstrap";
 
 const App = function AppWrapper() {
   const { address, destroy, connect } = useContractKit();
@@ -30,15 +30,15 @@ const App = function AppWrapper() {
             <Nav.Item>
               <Wallet
                 address={address}
-                amount={balance.cUSD}
-                symbol="cUSD"
+                amount={balance.CELO}
+                symbol="CELO"
                 destroy={destroy}
               />
             </Nav.Item>
           </Nav>
           <main>
             <Nfts
-              address={address}
+              name="GEO Collection"
               updateBalance={getBalance}
               marketplaceContract={marketplaceContract}
             />
@@ -46,7 +46,7 @@ const App = function AppWrapper() {
         </Container>
       ) : (
         <Cover
-          name="NFT Marketplace"
+          name="GEO Collection"
           coverImg={coverImg}
           connect={connect}
         />
