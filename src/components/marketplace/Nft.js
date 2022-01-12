@@ -1,8 +1,6 @@
-import BigNumber from "bignumber.js";
 import React from "react";
 import PropTypes from "prop-types";
-import { weiToCusd } from "../../utils/utils";
-import { Card, Button, Col, Badge, Stack} from "react-bootstrap";
+import { Card, Col, Badge, Stack, Row} from "react-bootstrap";
 import { truncateAddress } from '../../utils/utils';
 import Identicon from '../utils/Identicon'
 
@@ -17,7 +15,6 @@ const Nft = ({ nft, buy }) => {
       <Card className=" h-100">
         <Card.Header>
           <Stack direction="horizontal" gap={2}>
-
             <Identicon address={owner} size={28} />
             <span className="font-monospace text-secondary">{truncateAddress(owner)}</span>
             <Badge bg="secondary"
@@ -31,37 +28,24 @@ const Nft = ({ nft, buy }) => {
         </div>
         <Card.Body className="d-flex  flex-column text-center">
           <Card.Title>{name}</Card.Title>
-          <Card.Text className="flex-grow-1 ">{description}</Card.Text>
-
-
-          <Card.Title>Properies</Card.Title>
-
-          <div >
-
-    
-{attributes.map((attribute, key)=>(
- <div key={key}>
-  {attribute.trait_type} <Badge bg="secondary">{attribute.value}</Badge>
- </div>
-))}
-
-      
-
-       
-
-        {/* <div >
-        Color : <Badge bg="secondary"> Red</Badge>
-        </div>
-
-        <div >
-        Background color : <Badge bg="secondary"> Red</Badge>
-        </div> */}
-        
-
+          <Card.Text className="flex-grow-1">{description}</Card.Text>
+          {/* <Card.Title>Properies</Card.Title> */}
+          <div>
+            <Row className="mt-2">
+            {attributes.map((attribute, key)=>(
+              <Col key={key}>
+                <div className="border rounded bg-light">
+                  <div className="text-secondary fw-lighter small text-capitalize">
+                    {attribute.trait_type}
+                  </div>
+                  <div className="text-secondary text-capitalize font-monospace"> 
+                    {attribute.value}
+                  </div>
+                </div>
+              </Col>
+            ))}
+            </Row>
           </div>
-         
-
-
         </Card.Body>
                 
       </Card>
