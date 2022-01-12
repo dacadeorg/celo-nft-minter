@@ -22,6 +22,7 @@ const NftList = ({ marketplaceContract, name }) => {
     try {
       setLoading(true);
       const allNfts = await getNfts(marketplaceContract);
+
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });
@@ -49,10 +50,11 @@ const NftList = ({ marketplaceContract, name }) => {
   const fetchContractOwner = async (marketplaceContract) =>{
 
     const _address = await fetchNftContractOwner(marketplaceContract)
-    console.log({_address})
+  
     setNftOwner(_address)
 
   }
+
 
   useEffect(() => {
     try {
