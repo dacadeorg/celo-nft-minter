@@ -20,49 +20,38 @@ const AddNfts = ({ save, address }) => {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    setAttributes([])
+  };
   const handleShow = () => setShow(true);
 
-  const colorOptions = () => {
-      return (
-          <>          <option value="brown">Brown</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="orange">Orange</option>
-              <option value="indigo">Indigo</option>
-              <option value="violet">Violet</option>
-              <option value="gold">Gold</option>
-              <option value="pink">Pink</option>
-              <option value="red">Red</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
-          </>
+  
 
-      )
-  }
-
-    const shapeOptions = () => {
-        return (
-            <>          <option value="circle">Circle</option>
-                <option value="square">Square</option>
-                <option value="rectangle">Rectangle</option>
-                <option value="triangle">Triangle</option>
-
-            </>
-
-        )
-    }
-
+   
     const setAttributesFunc = (e, trait_type) => {
         const {value} = e.target
         const attributeObject = {
             trait_type,
             value
         }
+// Check if the object already exists and update it
+        const arr = attributes
+        const index = arr.findIndex((el) => el.trait_type === trait_type)
+        console.log({index})
+        if(index >= 0){
+          arr[index] = {
+            trait_type,
+            value
+          }
+          console.log({arr})
+          setAttributes(arr)
+          return
+        }
 
-        const attributeArray = [...attributes].push(attributeObject)
-        console.log({attributeArray})
-        setAttributes(attributeArray)
+        setAttributes(oldArray => [...oldArray, attributeObject]);
+        // const attributeArray = [...attributes].push(attributeObject)
+        console.log({attributes})
     }
 
   return (
@@ -134,7 +123,19 @@ const AddNfts = ({ save, address }) => {
                   }}
                   placeholder="Background Color"
               >
-                  <colorOptions />
+                   <option >Select Nft background color</option>
+              <option value="brown">Brown</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="orange">Orange</option>
+              <option value="indigo">Indigo</option>
+              <option value="violet">Violet</option>
+              <option value="gold">Gold</option>
+              <option value="pink">Pink</option>
+              <option value="red">Red</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+      
 
 
               </Form.Control>
@@ -149,9 +150,19 @@ const AddNfts = ({ save, address }) => {
                   }}
                   placeholder="NFT Color"
               >
-
-                  <colorOptions />
-
+         <option >Select NFT color</option>
+              <option value="brown">Brown</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="orange">Orange</option>
+              <option value="indigo">Indigo</option>
+              <option value="violet">Violet</option>
+              <option value="gold">Gold</option>
+              <option value="pink">Pink</option>
+              <option value="red">Red</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+          
               </Form.Control>
 
 
@@ -164,7 +175,12 @@ const AddNfts = ({ save, address }) => {
                   }}
                   placeholder="NFT Shape"
               >
-            <shapeOptions />
+         <option >Select NFT Shape</option>
+                 <option value="circle">Circle</option>
+                <option value="square">Square</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="triangle">Triangle</option>
+
 
               </Form.Control>
 

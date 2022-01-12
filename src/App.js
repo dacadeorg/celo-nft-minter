@@ -19,7 +19,6 @@ const App = function AppWrapper() {
   const { balance, getBalance } = useBalance();
   const marketplaceContract = useMarketplaceContract();
 
-  console.log({marketplaceContract})
 
   return (
     <>

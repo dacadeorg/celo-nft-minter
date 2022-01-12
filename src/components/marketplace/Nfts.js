@@ -49,7 +49,7 @@ const NftList = ({ marketplaceContract }) => {
   const fetchContractOwner = async (marketplaceContract) =>{
 
     const _address = await fetchNftContractOwner(marketplaceContract)
-    console.log({_address})
+  
     setNftOwner(_address)
 
   }
@@ -57,7 +57,6 @@ const NftList = ({ marketplaceContract }) => {
 
   useEffect(() => {
     try {
-      console.log({address, marketplaceContract})
       if (address && marketplaceContract) {
         // For testing purpose
         // toast(<NotificationSuccess text="Product added successfully" />);
