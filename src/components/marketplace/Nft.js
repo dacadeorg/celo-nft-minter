@@ -7,8 +7,10 @@ import { truncateAddress } from '../../utils/utils';
 import Identicon from '../utils/Identicon'
 
 const Nft = ({ nft, buy }) => {
-  const {  image, description, owner, name, index } = nft;
+  const {  image, description, owner, name, index, attributes } = nft;
 
+
+  console.log({attributes});
 
   return (
     <Col key={index}>
@@ -30,6 +32,34 @@ const Nft = ({ nft, buy }) => {
         <Card.Body className="d-flex  flex-column text-center">
           <Card.Title>{name}</Card.Title>
           <Card.Text className="flex-grow-1 ">{description}</Card.Text>
+
+
+          <Card.Title>Properies</Card.Title>
+
+          <div >
+
+    
+{attributes.map((attribute, key)=>(
+ <div key={key}>
+  {attribute.trait_type} <Badge bg="secondary">{attribute.value}</Badge>
+ </div>
+))}
+
+      
+
+       
+
+        {/* <div >
+        Color : <Badge bg="secondary"> Red</Badge>
+        </div>
+
+        <div >
+        Background color : <Badge bg="secondary"> Red</Badge>
+        </div> */}
+        
+
+          </div>
+         
 
 
         </Card.Body>

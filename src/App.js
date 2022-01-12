@@ -19,6 +19,7 @@ const App = function AppWrapper() {
   const { balance, getBalance } = useBalance();
   const marketplaceContract = useMarketplaceContract();
 
+
   return (
     <>
       <Notification />
