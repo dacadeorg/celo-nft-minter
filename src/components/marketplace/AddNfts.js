@@ -24,9 +24,6 @@ const AddNfts = ({ save, address }) => {
   };
   const handleShow = () => setShow(true);
 
-  
-
-   
     const setAttributesFunc = (e, trait_type) => {
         const {value} = e.target
         const attributeObject = {
@@ -58,7 +55,7 @@ const AddNfts = ({ save, address }) => {
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>New NFT</Modal.Title>
+          <Modal.Title>Create NFT</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -68,15 +65,13 @@ const AddNfts = ({ save, address }) => {
             {/*  className="mb-3 mt-3"*/}
             {/*>*/}
 
-              <FloatingLabel controlId="inputLocation" label="Name" className="mb-3">
-                  <Form.Control type="text" placeholder="Name of NFT"
-                                onChange={(e) => {
-                                    setName(e.target.value);
-                                }}
-                  />
-              </FloatingLabel>
-
-
+            <FloatingLabel controlId="inputLocation" label="Name" className="mb-3">
+                <Form.Control type="text" placeholder="Name of NFT"
+                  onChange={(e) => {
+                      setName(e.target.value);
+                  }}
+                />
+            </FloatingLabel>
 
             <FloatingLabel controlId="inputDescription" label="Description" className="mb-3">
               <Form.Control
@@ -105,36 +100,25 @@ const AddNfts = ({ save, address }) => {
               >
 
               </Form.Control>
-
-
+              <Form.Label>
+                <h5>Properties</h5>
+              </Form.Label>
               <Form.Control
                   as="select"
                   className={"mb-3"}
                   onChange={async (e) => {
                       setAttributesFunc(e, "background")
-
-
-
                   }}
-                  placeholder="Background Color"
+                  placeholder="Background"
               >
-                   <option >Select Nft background color</option>
-              <option value="brown">Brown</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="orange">Orange</option>
-              <option value="indigo">Indigo</option>
-              <option value="violet">Violet</option>
-              <option value="gold">Gold</option>
-              <option value="pink">Pink</option>
-              <option value="red">Red</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
-      
-
-
+                  <option >Background</option>
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                  <option value="cyan">Cyan</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="magenta">Violet</option>
               </Form.Control>
-
 
               <Form.Control
                   as="select"
@@ -145,21 +129,15 @@ const AddNfts = ({ save, address }) => {
                   }}
                   placeholder="NFT Color"
               >
-         <option >Select NFT color</option>
-              <option value="brown">Brown</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="orange">Orange</option>
-              <option value="indigo">Indigo</option>
-              <option value="violet">Violet</option>
-              <option value="gold">Gold</option>
-              <option value="pink">Pink</option>
-              <option value="red">Red</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
+                  <option >Color</option>
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                  <option value="cyan">Cyan</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="magenta">Violet</option>
           
               </Form.Control>
-
 
               <Form.Control
                   as="select"
@@ -170,15 +148,11 @@ const AddNfts = ({ save, address }) => {
                   }}
                   placeholder="NFT Shape"
               >
-         <option >Select NFT Shape</option>
+                 <option >Shape</option>
                  <option value="circle">Circle</option>
-                <option value="square">Square</option>
-                <option value="rectangle">Rectangle</option>
-                <option value="triangle">Triangle</option>
-
-
+                 <option value="square">Square</option>
+                 <option value="triangle">Triangle</option>
               </Form.Control>
-
 
           </Form>
         </Modal.Body>
