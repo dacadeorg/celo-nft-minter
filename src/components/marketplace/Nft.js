@@ -41,7 +41,7 @@ const Nft = ({ nft, buy }) => {
     
 {attributes.map((attribute, key)=>(
  <div key={key}>
-   <Badge bg="secondary">{attribute.trait_type.toUpperCase()} : {attribute.value}</Badge>
+  {attribute.trait_type} <Badge bg="secondary">{attribute.value}</Badge>
  </div>
 ))}
 
