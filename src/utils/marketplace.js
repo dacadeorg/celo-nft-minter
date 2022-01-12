@@ -7,7 +7,7 @@ export const createNft = async (
   marketplaceContract,
   performActions,
   {
-      name, description, ipfsImage, ownerAddress
+      name, description, ipfsImage, ownerAddress,  attributes
   },
 ) => {
     await performActions(async (kit) => {
@@ -16,10 +16,13 @@ export const createNft = async (
         const { defaultAccount } = kit;
         /* first, upload to IPFS */
         const data = JSON.stringify({
-            name, description, image: ipfsImage,
-            owner : defaultAccount
+            name, description,
+            image: ipfsImage,
+            owner : defaultAccount,
+            attributes
         })
 
+        console.log({data})
         try {
             const added = await client.add(data)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
@@ -137,8 +140,11 @@ export const fetchNftOwner = async (marketplaceContract,index) => {
 export const fetchNftContractOwner = async (marketplaceContract) => {
     try {
 
+
+        console.log("fetching nft owner!!!!!!!!")
         let owner = await marketplaceContract.methods.owner().call()
-        console.log("owner:" + owner)
+        console.log({owner})
+
         return owner
 
     } catch (e) {

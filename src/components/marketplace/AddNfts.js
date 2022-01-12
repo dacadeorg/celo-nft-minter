@@ -6,16 +6,64 @@ import {uploadIpfsOnChange} from "../../utils/marketplace";
 
 const AddNfts = ({ save, address }) => {
   // do we really need to use state for every single input?
+  //  we could use a form like formik and handle the data on submit
   const [name, setName] = useState("");
   const [ipfsImage, setIpfsImage] = useState("");
   const [description, setDescription] = useState("");
 
-  const isFormFilled = ()=> name && ipfsImage && description
+
+  const [attributes, setAttributes] = useState([]);
+  // const [color, setColor] = useState("");
+  // const [shape, setShape] = useState("");
+
+  const isFormFilled = ()=> name && ipfsImage && description && attributes.length > 2
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const colorOptions = () => {
+      return (
+          <>          <option value="brown">Brown</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="orange">Orange</option>
+              <option value="indigo">Indigo</option>
+              <option value="violet">Violet</option>
+              <option value="gold">Gold</option>
+              <option value="pink">Pink</option>
+              <option value="red">Red</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+          </>
+
+      )
+  }
+
+    const shapeOptions = () => {
+        return (
+            <>          <option value="circle">Circle</option>
+                <option value="square">Square</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="triangle">Triangle</option>
+
+            </>
+
+        )
+    }
+
+    const setAttributesFunc = (e, trait_type) => {
+        const {value} = e.target
+        const attributeObject = {
+            trait_type,
+            value
+        }
+
+        const attributeArray = [...attributes].push(attributeObject)
+        console.log({attributeArray})
+        setAttributes(attributeArray)
+    }
 
   return (
     <> 
@@ -62,7 +110,6 @@ const AddNfts = ({ save, address }) => {
                   className={"mb-3"}
                   onChange={async (e) => {
                       const imageUrl =await  uploadIpfsOnChange(e)
-                      console.log({imageUrl})
                       if(!imageUrl) {
 
                           alert("failed to upload image")
@@ -73,18 +120,54 @@ const AddNfts = ({ save, address }) => {
                   placeholder="Product name"
               >
 
+              </Form.Control>
+
+
+              <Form.Control
+                  as="select"
+                  className={"mb-3"}
+                  onChange={async (e) => {
+                      setAttributesFunc(e, "background")
+
+
+
+                  }}
+                  placeholder="Background Color"
+              >
+                  <colorOptions />
+
 
               </Form.Control>
 
 
-            {/*<FloatingLabel controlId="inputPrice" label="Price" className="mb-3">*/}
-            {/*  <Form.Control type="text" placeholder="Price" */}
-            {/*    onChange={(e) => {*/}
-            {/*      setPrice(e.target.value);*/}
-            {/*    }}*/}
-            {/*  />*/}
-            {/*</FloatingLabel>*/}
-            
+              <Form.Control
+                  as="select"
+                  className={"mb-3"}
+                  onChange={async (e) => {
+                      setAttributesFunc(e, "color")
+
+                  }}
+                  placeholder="NFT Color"
+              >
+
+                  <colorOptions />
+
+              </Form.Control>
+
+
+              <Form.Control
+                  as="select"
+                  className={"mb-3"}
+                  onChange={async (e) => {
+                      setAttributesFunc(e, "shape")
+
+                  }}
+                  placeholder="NFT Shape"
+              >
+            <shapeOptions />
+
+              </Form.Control>
+
 
           </Form>
         </Modal.Body>
@@ -101,7 +184,8 @@ const AddNfts = ({ save, address }) => {
                 name,
                 ipfsImage,
                 description,
-                  ownerAddress : address
+                  ownerAddress : address,
+                  attributes
                 // location,
                 // price,
               });

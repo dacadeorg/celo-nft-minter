@@ -54,8 +54,10 @@ const NftList = ({ marketplaceContract }) => {
 
   }
 
+
   useEffect(() => {
     try {
+      console.log({address, marketplaceContract})
       if (address && marketplaceContract) {
         // For testing purpose
         // toast(<NotificationSuccess text="Product added successfully" />);
