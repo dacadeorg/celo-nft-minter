@@ -22,6 +22,7 @@ const NftList = ({ marketplaceContract }) => {
     try {
       setLoading(true);
       const allNfts = await getNfts(marketplaceContract);
+
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });

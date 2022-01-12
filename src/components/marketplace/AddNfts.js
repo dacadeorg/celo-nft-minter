@@ -13,8 +13,6 @@ const AddNfts = ({ save, address }) => {
 
 
   const [attributes, setAttributes] = useState([]);
-  // const [color, setColor] = useState("");
-  // const [shape, setShape] = useState("");
 
   const isFormFilled = ()=> name && ipfsImage && description && attributes.length > 2
 
@@ -38,19 +36,16 @@ const AddNfts = ({ save, address }) => {
 // Check if the object already exists and update it
         const arr = attributes
         const index = arr.findIndex((el) => el.trait_type === trait_type)
-        console.log({index})
         if(index >= 0){
           arr[index] = {
             trait_type,
             value
           }
-          console.log({arr})
           setAttributes(arr)
           return
         }
 
         setAttributes(oldArray => [...oldArray, attributeObject]);
-        // const attributeArray = [...attributes].push(attributeObject)
         console.log({attributes})
     }
 

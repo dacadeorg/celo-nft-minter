@@ -99,6 +99,7 @@ export const getNfts = async (marketplaceContract) => {
                     name: meta.data.name,
                     image: meta.data.image,
                     description: meta.data.description,
+                    attributes : meta.data.attributes
                 })
             });
             nfts.push(nft);
