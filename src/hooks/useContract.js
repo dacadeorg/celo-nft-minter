@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { useState, useEffect, useCallback } from 'react';
 import { useContractKit } from '@celo-tools/use-contractkit';
 

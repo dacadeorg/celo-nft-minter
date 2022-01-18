@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dropdown, Stack, Spinner} from 'react-bootstrap';
-import { truncateAddress } from '../../utils/utils';
+import { truncateAddress } from '../../utils';
 import { ERC20_DECIMALS } from '../../utils/constants';
 
-import Identicon from '../utils/Identicon'
+import Identicon from '../ui/Identicon'
 
 const Wallet = ({ address, amount, symbol, destroy }) => {
   if (address) {

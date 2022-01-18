@@ -1,18 +1,15 @@
 import React from "react";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import Wallet from "./components/wallet/Wallet";
-import { Notification } from "./components/utils/Notifications";
-import { Cover } from "./components/utils/Cover";
-import Nfts from "./components/minter/Nfts";
+import Wallet from "./components/wallet";
+import { Notification } from "./components/ui/Notifications";
+import Cover from "./components/minter/Cover";
+import Nfts from "./components/minter/nfts";
 import coverImg from "./assets/img/nft_geo_cover.png";
 import "./App.css";
 import "@celo-tools/use-contractkit/lib/styles.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import {
-  useBalance,
-  useMinterContract,
-} from "./utils/hooks";
+import { useBalance, useMinterContract } from "./hooks";
 import { Container, Nav } from "react-bootstrap";
 
 const App = function AppWrapper() {
@@ -46,11 +43,7 @@ const App = function AppWrapper() {
           </main>
         </Container>
       ) : (
-        <Cover
-          name="GEO Collection"
-          coverImg={coverImg}
-          connect={connect}
-        />
+        <Cover name="GEO Collection" coverImg={coverImg} connect={connect} />
       )}
     </>
   );

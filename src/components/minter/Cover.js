@@ -43,4 +43,4 @@ Cover.defaultProps = {
   name: '',
 };
 
-export {Cover};
+export default Cover;
