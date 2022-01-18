@@ -5,14 +5,12 @@ import PropTypes from 'prop-types';
 import AddNfts from './AddNfts';
 import Nft from './Nft';
 import Loader from '../utils/Loader';
-
 import {NotificationSuccess, NotificationError} from '../utils/Notifications';
 import { getNfts, createNft, fetchNftContractOwner } from '../../utils/marketplace';
 import { Row } from 'react-bootstrap';
 
 const NftList = ({ marketplaceContract, name }) => {
   const { performActions, address } = useContractKit();
-
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [nftOwner, setNftOwner] = useState(null);
@@ -22,7 +20,6 @@ const NftList = ({ marketplaceContract, name }) => {
     try {
       setLoading(true);
       const allNfts = await getNfts(marketplaceContract);
-
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });
