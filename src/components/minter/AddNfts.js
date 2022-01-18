@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Modal, Form, FloatingLabel, Card , Alert} from "react-bootstrap";
-import {uploadIpfsOnChange} from "../../utils/marketplace";
+import {uploadIpfsOnChange} from "../../utils/minter";
 
 const AddNfts = ({ save, address }) => {
   // do we really need to use state for every single input?

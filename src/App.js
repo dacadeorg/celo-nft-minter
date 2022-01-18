@@ -3,7 +3,7 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import Wallet from "./components/wallet/Wallet";
 import { Notification } from "./components/utils/Notifications";
 import { Cover } from "./components/utils/Cover";
-import Nfts from "./components/marketplace/Nfts";
+import Nfts from "./components/minter/Nfts";
 import coverImg from "./assets/img/nft_geo_cover.png";
 import "./App.css";
 import "@celo-tools/use-contractkit/lib/styles.css";
@@ -11,14 +11,14 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 import {
   useBalance,
-  useMarketplaceContract,
+  useMinterContract,
 } from "./utils/hooks";
 import { Container, Nav } from "react-bootstrap";
 
 const App = function AppWrapper() {
   const { address, destroy, connect } = useContractKit();
   const { balance, getBalance } = useBalance();
-  const marketplaceContract = useMarketplaceContract();
+  const minterContract = useMinterContract();
 
 
   return (
@@ -41,7 +41,7 @@ const App = function AppWrapper() {
             <Nfts
               name="GEO Collection"
               updateBalance={getBalance}
-              marketplaceContract={marketplaceContract}
+              minterContract={minterContract}
             />
           </main>
         </Container>

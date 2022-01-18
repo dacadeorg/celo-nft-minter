@@ -4,7 +4,7 @@ import axios from "axios";
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 export const createNft = async (
-  marketplaceContract,
+  minterContract,
   performActions,
   {
       name, description, ipfsImage, ownerAddress,  attributes
@@ -29,7 +29,7 @@ export const createNft = async (
             /* after file is uploaded to IPFS, pass the URL to save it on CELO */
             console.log({url})
 
-            let transaction = await marketplaceContract.methods.safeMint(ownerAddress, url).send({from: defaultAccount})
+            let transaction = await minterContract.methods.safeMint(ownerAddress, url).send({from: defaultAccount})
             // let tx = await transaction.wait()
             // let event = tx.events[0]
             // let value = event.args[2]
@@ -41,7 +41,7 @@ export const createNft = async (
             return transaction
             // const price = ethers.utils.parseUnits(formInput.price, 'ether')
             //
-            // /* then list the item for sale on the marketplace */
+            // /* then list the item for sale on the minter */
             // contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
             // let listingPrice = await contract.getListingPrice()
             // listingPrice = listingPrice.toString()
@@ -75,23 +75,23 @@ export const  uploadIpfsOnChange = async (e) => {
     }
 }
 
-export const getNfts = async (marketplaceContract) => {
+export const getNfts = async (minterContract) => {
     try {
-        // const calling = await marketplaceContract.methods.safeMint("0x9bb85D0bf68eeb273b7Fa1Aa1D0D822b9ee9b7fd", "https://bafybeihqiuhn3qzprjtvahyob2mxrhgr4i4xw4237zh7gu6oidobg32d3m.ipfs.infura-ipfs.io/").call();
+        // const calling = await minterContract.methods.safeMint("0x9bb85D0bf68eeb273b7Fa1Aa1D0D822b9ee9b7fd", "https://bafybeihqiuhn3qzprjtvahyob2mxrhgr4i4xw4237zh7gu6oidobg32d3m.ipfs.infura-ipfs.io/").call();
         // console.log({calling})
 
         const nfts = [];
-        const nftsLength = await marketplaceContract.methods.totalSupply().call()
+        const nftsLength = await minterContract.methods.totalSupply().call()
         console.log({nftsLength})
         for (let i = 0; i < Number(nftsLength); i ++) {
             const nft = new Promise(async (resolve) => {
-                const res = await marketplaceContract.methods
+                const res = await minterContract.methods
                     .tokenURI(i)
                     .call()
                 console.log("res, ", res)
                 const meta = await fetchNftMeta(res)
                 console.log({meta})
-                const owner = await fetchNftOwner(marketplaceContract, i)
+                const owner = await fetchNftOwner(minterContract, i)
                 console.log({owner})
                 resolve({
                     index: i,
@@ -128,22 +128,22 @@ export const fetchNftMeta = async (ipfsUrl) => {
 
 };
 
-export const fetchNftOwner = async (marketplaceContract,index) => {
+export const fetchNftOwner = async (minterContract,index) => {
     try {
 
-        return  await marketplaceContract.methods.ownerOf(index).call()
+        return  await minterContract.methods.ownerOf(index).call()
 
     } catch (e) {
         console.log({e})
     }
 };
 
-export const fetchNftContractOwner = async (marketplaceContract) => {
+export const fetchNftContractOwner = async (minterContract) => {
     try {
 
 
         console.log("fetching nft owner!!!!!!!!")
-        let owner = await marketplaceContract.methods.owner().call()
+        let owner = await minterContract.methods.owner().call()
         console.log({owner})
 
         return owner

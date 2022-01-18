@@ -6,10 +6,10 @@ import AddNfts from './AddNfts';
 import Nft from './Nft';
 import Loader from '../utils/Loader';
 import {NotificationSuccess, NotificationError} from '../utils/Notifications';
-import { getNfts, createNft, fetchNftContractOwner } from '../../utils/marketplace';
+import { getNfts, createNft, fetchNftContractOwner } from '../../utils/minter';
 import { Row } from 'react-bootstrap';
 
-const NftList = ({ marketplaceContract, name }) => {
+const NftList = ({ minterContract, name }) => {
   const { performActions, address } = useContractKit();
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -19,19 +19,19 @@ const NftList = ({ marketplaceContract, name }) => {
   const getAssets = useCallback(async () => {
     try {
       setLoading(true);
-      const allNfts = await getNfts(marketplaceContract);
+      const allNfts = await getNfts(minterContract);
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });
     } finally {
       setLoading(false);
     }
-  }, [marketplaceContract]);
+  }, [minterContract]);
 
   const addNft = async (data) => {
     try {
       setLoading(true);
-      await createNft(marketplaceContract, performActions, data);
+      await createNft(minterContract, performActions, data);
       toast(<NotificationSuccess text="Updating NFT list...." />);
       // window.location.reload()
       getAssets()
@@ -44,9 +44,9 @@ const NftList = ({ marketplaceContract, name }) => {
   };
 
 
-  const fetchContractOwner = async (marketplaceContract) =>{
+  const fetchContractOwner = async (minterContract) =>{
 
-    const _address = await fetchNftContractOwner(marketplaceContract)
+    const _address = await fetchNftContractOwner(minterContract)
   
     setNftOwner(_address)
 
@@ -55,17 +55,17 @@ const NftList = ({ marketplaceContract, name }) => {
 
   useEffect(() => {
     try {
-      if (address && marketplaceContract) {
+      if (address && minterContract) {
         // For testing purpose
         // toast(<NotificationSuccess text="Product added successfully" />);
         getAssets();
-        fetchContractOwner(marketplaceContract)
+        fetchContractOwner(minterContract)
       }
     } catch (error) {
       console.log({ error });
       // toast.error(error);
     }
-  }, [marketplaceContract, address, getNfts]);
+  }, [minterContract, address, getNfts]);
 
   if (address) {
 
@@ -105,7 +105,7 @@ const NftList = ({ marketplaceContract, name }) => {
 };
 
 NftList.propTypes = {
-  marketplaceContract: PropTypes.instanceOf(Contract).isRequired,
+  minterContract: PropTypes.instanceOf(Contract).isRequired,
   updateBalance: PropTypes.func.isRequired
 };
 
