@@ -1,13 +1,13 @@
-import "./App.css";
-import "@celo-tools/use-contractkit/lib/styles.css";
-import "react-toastify/dist/ReactToastify.min.css";
-import { useContractKit } from "@celo-tools/use-contractkit";
 import React from "react";
+import { useContractKit } from "@celo-tools/use-contractkit";
 import Wallet from "./components/wallet/Wallet";
 import { Notification } from "./components/utils/Notifications";
 import { Cover } from "./components/utils/Cover";
 import Nfts from "./components/marketplace/Nfts";
 import coverImg from "./assets/img/nft_geo_cover.png";
+import "./App.css";
+import "@celo-tools/use-contractkit/lib/styles.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import {
   useBalance,
