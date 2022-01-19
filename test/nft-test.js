@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("MyNFT", function () {
-
+  this.timeout(50000);
   let myNFT;
 
   this.beforeEach(async function() {
