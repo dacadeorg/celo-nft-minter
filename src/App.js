@@ -17,7 +17,6 @@ const App = function AppWrapper() {
   const { balance, getBalance } = useBalance();
   const minterContract = useMinterContract();
 
-
   return (
     <>
       <Notification />
