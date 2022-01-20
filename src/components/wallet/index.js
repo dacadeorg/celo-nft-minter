@@ -1,21 +1,20 @@
 import React from 'react';
-import { Dropdown, Stack, Spinner} from 'react-bootstrap';
-import { truncateAddress } from '../../utils';
-import { ERC20_DECIMALS } from '../../utils/constants';
-
+import {Dropdown, Stack, Spinner} from 'react-bootstrap';
+import {formatBigNumber, truncateAddress} from '../../utils';
 import Identicon from '../ui/Identicon'
 
-const Wallet = ({ address, amount, symbol, destroy }) => {
-  if (address) {
-    return <>
+const Wallet = ({address, amount, symbol, destroy}) => {
+    if (address) {
+        return <>
 
-    <Dropdown>
-      <Dropdown.Toggle variant="light" align="end"  id="dropdown-basic" className="d-flex align-items-center border rounded-pill py-1">  
-        { amount ? ( 
-            <>{amount.shiftedBy(-ERC20_DECIMALS).toFixed(2)} <span className="ms-1"> {symbol}</span></>
-          ):( <Spinner animation="border" size="sm" className="opacity-25" />)}
-        <Identicon address={address} size={28} className="ms-2 me-1"/>
-      </Dropdown.Toggle>
+            <Dropdown>
+                <Dropdown.Toggle variant="light" align="end" id="dropdown-basic"
+                                 className="d-flex align-items-center border rounded-pill py-1">
+                    {amount ? (
+                        <>{formatBigNumber(amount)} <span className="ms-1"> {symbol}</span></>
+                    ) : (<Spinner animation="border" size="sm" className="opacity-25"/>)}
+                    <Identicon address={address} size={28} className="ms-2 me-1"/>
+                </Dropdown.Toggle>
 
       <Dropdown.Menu className="shadow-lg border-0" >
         <Dropdown.Item href={`https://alfajores-blockscout.celo-testnet.org/address/${address}/transactions`}  target="_blank">     

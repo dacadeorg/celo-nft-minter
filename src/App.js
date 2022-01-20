@@ -13,38 +13,52 @@ import { useBalance, useMinterContract } from "./hooks";
 import { Container, Nav } from "react-bootstrap";
 
 const App = function AppWrapper() {
-  const { address, destroy, connect } = useContractKit();
-  const { balance, getBalance } = useBalance();
+  /*
+  address : fetch the connected wallet address
+  destroy: terminate connection to user wallet
+  connect : connect to the celo blockchain
+   */
+  const {address, destroy, connect} = useContractKit();
+
+  //  fetch user's celo balance using hook
+  const {balance, getBalance} = useBalance();
+
+  // initialize the NFT mint contract
   const minterContract = useMinterContract();
 
   return (
-    <>
-      <Notification />
+      <>
+        <Notification/>
 
-      {address ? (
-        <Container fluid="md">
-          <Nav className="justify-content-end pt-3 pb-5">
-            <Nav.Item>
-              <Wallet
-                address={address}
-                amount={balance.CELO}
-                symbol="CELO"
-                destroy={destroy}
-              />
-            </Nav.Item>
-          </Nav>
-          <main>
-            <Nfts
-              name="GEO Collection"
-              updateBalance={getBalance}
-              minterContract={minterContract}
-            />
-          </main>
-        </Container>
-      ) : (
-        <Cover name="GEO Collection" coverImg={coverImg} connect={connect} />
-      )}
-    </>
+        {address ? (
+            <Container fluid="md">
+              <Nav className="justify-content-end pt-3 pb-5">
+                <Nav.Item>
+
+                  {/*display user wallet*/}
+                  <Wallet
+                      address={address}
+                      amount={balance.CELO}
+                      symbol="CELO"
+                      destroy={destroy}
+                  />
+                </Nav.Item>
+              </Nav>
+              <main>
+
+                {/*list NFTs*/}
+                <Nfts
+                    name="GEO Collection"
+                    updateBalance={getBalance}
+                    minterContract={minterContract}
+                />
+              </main>
+            </Container>
+        ) : (
+            //  if user wallet is not connected display cover page
+            <Cover name="GEO Collection" coverImg={coverImg} connect={connect}/>
+        )}
+      </>
   );
 };
 

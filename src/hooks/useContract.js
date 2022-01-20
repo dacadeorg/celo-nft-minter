@@ -8,6 +8,7 @@ export const useContract = (abi, contractAddress) => {
   const getContract = useCallback(async () => {
     const kit = await getConnectedKit();
 
+    // get a contract interface to interact with
     setContract(new kit.web3.eth.Contract(abi, contractAddress));
   }, [getConnectedKit, abi, contractAddress]);
 

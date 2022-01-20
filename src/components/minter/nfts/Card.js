@@ -52,6 +52,8 @@ const NftCard = ({ nft }) => {
 };
 
 NftCard.propTypes = {
+
+  // props passed into this component
   nft: PropTypes.instanceOf(Object).isRequired,
 };
 

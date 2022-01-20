@@ -5,7 +5,10 @@ export const useBalance = () => {
   const { address, kit } = useContractKit();
   const [balance, setBalance] = useState(0);
 
+
   const getBalance = useCallback(async () => {
+
+    // fetch a connected wallet token balance
     const value = await kit.getTotalBalance(address);
     setBalance(value);
   }, [address, kit]);

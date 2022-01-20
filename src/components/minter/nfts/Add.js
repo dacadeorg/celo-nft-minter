@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 import { uploadToIpfs } from "../../../utils/minter";
 
+// basic attributes that can be added to NFT
 const COLORS = ["Red", "Green", "Blue", "Cyan", "Yellow", "Purple"];
 const SHAPES = ["Circle", "Square", "Triangle"];
 
@@ -11,28 +12,40 @@ const AddNfts = ({ save, address }) => {
   const [name, setName] = useState("");
   const [ipfsImage, setIpfsImage] = useState("");
   const [description, setDescription] = useState("");
+
+  //store attributes of an NFT
   const [attributes, setAttributes] = useState([]);
   const [show, setShow] = useState(false);
 
-  const isFormFilled = () =>
-    name && ipfsImage && description && attributes.length > 2;
 
+  // check if all form data has been filled
+  const isFormFilled = () =>
+      name && ipfsImage && description && attributes.length > 2;
+
+  // close the popup modal
   const handleClose = () => {
     setShow(false);
     setAttributes([]);
   };
 
+  // display the popup modal
   const handleShow = () => setShow(true);
 
+  // add an attribute to an NFT
   const setAttributesFunc = (e, trait_type) => {
-    const { value } = e.target;
+    const {value} = e.target;
     const attributeObject = {
       trait_type,
       value,
     };
     const arr = attributes;
+
+    // check if attribute already exists
     const index = arr.findIndex((el) => el.trait_type === trait_type);
+
     if (index >= 0) {
+
+      // update the existing attribute
       arr[index] = {
         trait_type,
         value,
@@ -41,6 +54,7 @@ const AddNfts = ({ save, address }) => {
       return;
     }
 
+    // add a new attribute
     setAttributes((oldArray) => [...oldArray, attributeObject]);
   };
 
@@ -194,6 +208,8 @@ const AddNfts = ({ save, address }) => {
 };
 
 AddNfts.propTypes = {
+
+  // props passed into this component
   save: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
 };

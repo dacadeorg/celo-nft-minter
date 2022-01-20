@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ERC20_DECIMALS } from "../../utils/constants";
+import {formatBigNumber} from "../../utils";
 
 const Balance = ({ amount, symbol }) => {
   if (amount) {
     return (
       <div>
-        {/* move shiftedBy into utils */}
+
         <span id="balance">
-          ${amount.shiftedBy(-ERC20_DECIMALS).toFixed(2)}
+
+        {/* convert big number from wei */}
+            ${formatBigNumber(amount)}
         </span>
-        <span className="">{symbol}</span>
+          <span className="">{symbol}</span>
       </div>
     );
   }
