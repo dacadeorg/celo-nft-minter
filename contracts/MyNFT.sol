@@ -14,6 +14,7 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     constructor() ERC721("MyNFT", "MNFT") {}
 
+//    mint an NFT
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
@@ -30,10 +31,12 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
+    //    destroy an NFT
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
+    //    return IPFS url of NFT metadata
     function tokenURI(uint256 tokenId)
         public
         view

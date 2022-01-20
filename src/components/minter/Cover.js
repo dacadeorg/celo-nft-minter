@@ -35,7 +35,9 @@ const Cover = ({ name, coverImg, connect }) => {
   return null;
 };
 
+
 Cover.propTypes = {
+  // props passed into this component
   name: PropTypes.string,
 };
 
