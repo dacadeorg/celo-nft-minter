@@ -23,8 +23,8 @@ ReactDOM.render(
         chainId: 44787,
       }}
       dapp={{
-        name: 'Celo Marketplace',
-        description: 'A market place dapp built on the Celo blockchain',
+        name: 'Geo Collection.',
+        description: 'An NFT collection of geometric forms.',
         url: 'https://dacade.org',
       }}
     >

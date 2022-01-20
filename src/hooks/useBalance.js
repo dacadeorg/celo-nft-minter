@@ -9,7 +9,6 @@ export const useBalance = () => {
     const value = await kit.getTotalBalance(address);
     setBalance(value);
   }, [address, kit]);
-  // look into isMounted from https://usehooks-ts.com/
 
   useEffect(() => {
     if (address) getBalance();
