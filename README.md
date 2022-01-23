@@ -33,7 +33,7 @@
   </p>
 </div>
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -59,7 +59,7 @@
   </ol>
 </details>
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -76,7 +76,7 @@ the Celo blockchain and its metadata are saved on IPFS(InterPlanetary File Syste
 </div>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 ### :man_technologist: Technologies
 
@@ -92,7 +92,7 @@ Frameworks and libraries used in this project include:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 <!-- GETTING STARTED -->
 
@@ -163,7 +163,7 @@ Step-by-step guide to redeploying the NFT smart contract using your address to e
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 
 <!-- CONTRIBUTING -->
@@ -185,7 +185,7 @@ simply open an issue with the tag "enhancement". Don't forget to give the projec
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 
 <!-- LICENSE -->
@@ -198,7 +198,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
 
 <!-- CONTACT -->
 
