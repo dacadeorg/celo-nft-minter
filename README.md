@@ -33,7 +33,7 @@
   </p>
 </div>
 
-
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -59,7 +59,7 @@
   </ol>
 </details>
 
-
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -72,11 +72,13 @@ the Celo blockchain and its metadata are saved on IPFS(InterPlanetary File Syste
 
 
 <div align="center">
-   <img src="./README/images/shot2.png" alt="Logo" >)
+   <img src="./README/images/shot2.png" alt="Logo" width="300px" >
 </div>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+
+### :man_technologist: Technologies
 
 Frameworks and libraries used in this project include:
 
@@ -90,10 +92,11 @@ Frameworks and libraries used in this project include:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+## :point_down: Getting Started
 
 To get this project up running locally, follow these simple example steps.
 
@@ -160,11 +163,12 @@ Step-by-step guide to redeploying the NFT smart contract using your address to e
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 
 
 <!-- CONTRIBUTING -->
 
-## Contributing
+## :writing_hand: Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
 contributions you make are **greatly appreciated**.
@@ -181,10 +185,12 @@ simply open an issue with the tag "enhancement". Don't forget to give the projec
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+
 
 <!-- LICENSE -->
 
-## License
+## :policeman: License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
@@ -192,9 +198,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+
 <!-- CONTACT -->
 
-## Contact
+## :iphone: Contact
 
 Visit us at - [Dacade](https://dacade.org)
 
