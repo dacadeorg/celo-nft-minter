@@ -23,6 +23,7 @@ const NftList = ({ minterContract, name }) => {
     try {
       setLoading(true);
       const allNfts = await getNfts(minterContract);
+      if (!allNfts) return
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });

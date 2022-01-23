@@ -1,86 +1,231 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[//]: # (  <a href="https://github.com/othneildrew/Best-README-Template">)
 
-### `yarn test`
+[//]: # (    <img src="images/logo.png" alt="Logo" width="80" height="80">)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[//]: # (  </a>)
 
-### `yarn build`
+<h3 align="center">GEO Collection</h3>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <p align="center">
+   An awesome NFT minter built on the Celo blockchain
+    <br />
+    <br />
+    <a href="#">View Demo</a>
+    ·
+    <a href="https://github.com/dacadeorg/celo-nft-minter/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/dacadeorg/celo-nft-minter/issues">Request Feature</a>
+  </p>
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#Smart-Contract-Deployment">Smart Contract Deployment</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
 
-### `yarn eject`
+  </ol>
+</details>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<!-- ABOUT THE PROJECT -->
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## About The Project
 
-## Learn More
+[![Celo Minter][product-screenshot]]("product-screenshot")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+NFT minter is a decentralized application that enables users view and mint NFTs to an address. These NFTs are minted on
+the Celo blockchain and its metadata are saved on IPFS(InterPlanetary File System)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<div align="center">
+   <img src="./README/images/shot2.png" alt="Logo" >)
+</div>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Built With
 
-### Analyzing the Bundle Size
+Frameworks and libraries used in this project include:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* [React.js](https://reactjs.org/)
+* [Hardhat](https://hardhat.org/getting-started/)
+* [Solidity](https://docs.soliditylang.org/en/v0.8.11/)
+* [Openzeppelin](https://openzeppelin.com/)
+* [Bootstrap](https://getbootstrap.com)
+* [Celo-tools](https://docs.celo.org/learn/developer-tools)
 
-### Making a Progressive Web App
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- GETTING STARTED -->
 
-### Deployment
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To get this project up running locally, follow these simple example steps.
 
-### `yarn build` fails to minify
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You will need node installed. If you do not have node installed, you can install it with the command below.
 
-# Basic Sample Hardhat Project
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+### Installation
 
-Try running some of the following tasks:
+Step-by-step guide to running this NFT minter locally;
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+1. Clone the repo
+   ```sh
+   git clone https://github.com/dacadeorg/celo-nft-minter.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Install Hardhat
+   ```sh
+   npm install --save-dev hardhat
+   ```
+
+3. Run your application
+   ```sh
+   npm run start
+   ```
+
+### Smart-Contract-Deployment
+
+Step-by-step guide to redeploying the NFT smart contract using your address to enable you mint NFTs.
+
+1. Compile the smart contract
+   ```sh
+   npx hardhat compile
+   ```
+2. Run tests on smart contract
+   ```sh
+   npx hardhat test
+   ```
+3. Update env file
+
+* Create a file in the root directory called ".env"
+* Create a key called MNEMONIC and paste in your mnemonic key. e.g
+     ```js
+   MNEMONIC=asdasd adeew grege egegs nbrebe fwf vwefwf wvwvwv wevw vbtbtr wcvd
+   ```
+
+4. Deploy the smart contract
+   ```sh
+    npx hardhat run scripts/deploy.js
+   ```
+5. Run the project
+   ```sh
+    npm run start
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
+contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also
+simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+
+## Contact
+
+Visit us at - [Dacade](https://dacade.org)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/dacadeorg/celo-nft-minter.svg?style=for-the-badge
+
+[contributors-url]: https://github.com/dacadeorg/celo-nft-minter/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/dacadeorg/celo-nft-minter.svg?style=for-the-badge
+
+[forks-url]: https://github.com/dacadeorg/celo-nft-minter/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/dacadeorg/celo-nft-minter.svg?style=for-the-badge
+
+[stars-url]: https://github.com/dacadeorg/celo-nft-minter/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/dacadeorg/celo-nft-minter.svg?style=for-the-badge
+
+[issues-url]: https://github.com/dacadeorg/celo-nft-minter/issues
+
+[license-shield]: https://img.shields.io/github/license/dacadeorg/celo-nft-minter.svg?style=for-the-badge
+
+[license-url]: ./README/LICENSE.txt
+
+[product-screenshot]: ./README/images/shot1.png
+
+[product-screenshot-2]: ./README/images/shot2.png
