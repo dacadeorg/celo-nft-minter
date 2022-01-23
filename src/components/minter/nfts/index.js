@@ -29,6 +29,7 @@ const NftList = ({minterContract, name}) => {
 
       // fetch all nfts from the smart contract
       const allNfts = await getNfts(minterContract);
+      if (!allNfts) return
       setNfts(allNfts);
     } catch (error) {
       console.log({ error });
