@@ -103,12 +103,7 @@ To get this project up running locally, follow these simple example steps.
 
 ### Prerequisites
 
-You will need node installed. If you do not have node installed, you can install it with the command below.
-
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+You will need node and yarn installed.
 
 ### Installation
 
@@ -120,16 +115,12 @@ Step-by-step guide to running this NFT minter locally;
    ```
 2. Install NPM packages
    ```sh
-   npm install
-   ```
-3. Install Hardhat
-   ```sh
-   npm install --save-dev hardhat
+   yarn install
    ```
 
 3. Run your application
    ```sh
-   npm run start
+   yarn start
    ```
 
 ### Smart-Contract-Deployment
@@ -158,7 +149,7 @@ Step-by-step guide to redeploying the NFT smart contract using your address to e
    ```
 5. Run the project
    ```sh
-    npm run start
+    yarn start
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
