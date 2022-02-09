@@ -23,11 +23,13 @@ const Wallet = ({address, amount, symbol, destroy}) => {
                 <span className="font-monospace">{truncateAddress(address)}</span>
             </Stack>
         </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item as="button" className="d-flex align-items-center"  onClick={() => {destroy();}} >
-            <i className="bi bi-box-arrow-right me-2 fs-4" />
-            Disconnect
-        </Dropdown.Item>
+        <Dropdown.Divider/>
+          <Dropdown.Item as="button" className="d-flex align-items-center" onClick={() => {
+              destroy()
+          }}>
+              <i className="bi bi-box-arrow-right me-2 fs-4"/>
+              Disconnect
+          </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     
