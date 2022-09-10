@@ -1,17 +1,18 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
-import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
-import { uploadToIpfs } from "../../../utils/minter";
+import {Button, Modal, Form, FloatingLabel} from "react-bootstrap";
+import {uploadFileToWebStorage} from "../../../utils/minter";
+
 
 // basic attributes that can be added to NFT
 const COLORS = ["Red", "Green", "Blue", "Cyan", "Yellow", "Purple"];
 const SHAPES = ["Circle", "Square", "Triangle"];
 
-const AddNfts = ({ save, address }) => {
-  const [name, setName] = useState("");
-  const [ipfsImage, setIpfsImage] = useState("");
-  const [description, setDescription] = useState("");
+const AddNfts = ({save, address}) => {
+    const [name, setName] = useState("");
+    const [ipfsImage, setIpfsImage] = useState("");
+    const [description, setDescription] = useState("");
 
   //store attributes of an NFT
   const [attributes, setAttributes] = useState([]);
@@ -110,15 +111,16 @@ const AddNfts = ({ save, address }) => {
               type="file"
               className={"mb-3"}
               onChange={async (e) => {
-                const imageUrl = await uploadToIpfs(e);
-                if (!imageUrl) {
-                  alert("failed to upload image");
-                  return;
-                }
-                setIpfsImage(imageUrl);
-              }}
+                  const imageUrl = await uploadFileToWebStorage(e)
+                  if (!imageUrl) {
+                      alert("failed to upload image");
+                      return;
+                  }
+                  setIpfsImage(imageUrl);
+              }
+              }
               placeholder="Product name"
-            ></Form.Control>
+            />
             <Form.Label>
               <h5>Properties</h5>
             </Form.Label>
