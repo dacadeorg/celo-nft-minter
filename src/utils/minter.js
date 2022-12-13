@@ -8,7 +8,7 @@ const client = new Web3Storage({
 
 const formatName = (name) => {
     // replace all spaces with %20
-    return name.replace(/\s/g, '%20');
+    return encodeURI(name);
 };
 
 // object to convert to file
